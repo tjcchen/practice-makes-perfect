@@ -1,6 +1,6 @@
 <h2>Interviews</h2>
 <p>
-  Personal project for interview preparations of both Front-End and Back-End
+  Personal project for interview preparations of both Front-End and Back-End. This project includes most common module encapsulations: Ajax, Tabs, Slider, Parallax Scrolling, Waterfall
 </p>
 
 <h2>Contact</h2>
