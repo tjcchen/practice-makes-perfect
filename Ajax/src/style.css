@@ -1,0 +1,32 @@
+* { padding: 0; margin: 0; }
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.content-container {
+  width: 600px;
+  height: 480px;
+  border: 1px solid #ccc;
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.content-area {
+  width: 600px;
+  height: 400px;
+}
+
+.content-button {
+  margin-top: 12px;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #4395ff;
+  background-color: #4395ff;
+  color: #fff;
+  cursor: pointer;
+}

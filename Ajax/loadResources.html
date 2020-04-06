@@ -2,41 +2,17 @@
 <html>
 <head>
   <title>Self-Encapulated Ajax Component</title>
-  <style type="text/css">
-  * { padding: 0; margin: 0; }
-  h2 {
-    text-align: center;
-    margin-top: 50px;
-  }
-  .content-container {
-    width: 600px;
-    height: 480px;
-    border: 1px solid #ccc;
-    margin: 20px auto 0;
-    text-align: center;
-  }
-  .content-area {
-    width: 300px;
-    height: 400px;
-  }
-  .content-button {
-    width: 120px;
-    height: 24px;
-    border-radius: 3px;
-    outline: none;
-    border: 1px solid #4395ff;
-    background-color: #4395ff;
-  }
-  </style>
+  <link rel="stylesheet" type="text/css" href="src/style.css"/>
 </head>
 <body>
   <h2>Self-Encapulated Ajax Component</h2>
 
   <div class="content-container">
-    <div class="content-area"></div>
-    <button class="content-button">Load Resources</button>
+    <div class="content-area" id="content-area"></div>
+
+    <button class="content-button" id="content-button">Load Resources</button>
   </div>
 
-  <script type="text/javascript"></script>
+  <script type="text/javascript" src="src/script.js"></script>
 </body>
 </html>
