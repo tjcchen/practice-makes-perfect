@@ -2,7 +2,7 @@
 <p>
   Personal project for interview preparations of both Front-End and Back-End. 
   <br/><br/>
-  The project includes most common components encapsulation: Ajax, Tabs, Slider, Parallax Scrolling, Waterfall etc.
+  The project includes most common use components encapsulation: Ajax, Tabs, Slider, Parallax Scrolling, Waterfall etc.
 </p>
 
 <h2>Contact</h2>
