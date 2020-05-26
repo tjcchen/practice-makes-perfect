@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tab Switch Component</title>
+  <style type="text/css">
+  * { padding: 0; margin: 0; }
+  .content {
+    margin: 90px auto 0;
+    width: 1000px;
+    text-align: center;
+  }
+  .tab-container {
+    margin-top: 10px;
+  }
+  .tab-header .tab {
+    width: 248px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: -4px;
+    display: inline-block;
+    cursor: pointer;
+    background: #f1f1f1;
+    border-right: 2px solid #ccc;
+    -webkit-transition: all linear 300ms;
+    transition: all linear 300ms;
+  }
+  .tab-header .tab:hover {
+    background: #ccc;
+  }
+  .tab-header .tab.active {
+    background: #ccc;
+  }
+  .tab-header .first-tab {
+    margin-left: 0;
+  }
+  .tab-body .tab-content {
+    display: none;
+    height: 400px;
+    line-height: 400px;
+    background: #ccc;
+  }
+  .tab-body .tab-content.active {
+    display: block;
+  }
+  </style>
+</head>
+<body>
+  <div id="content" class="content">
+    <h2 id="hd">Tab Switch Component</h2>
+    <div class="tab-container">
+      <div class="tab-header">
+        <div class="tab first-tab active">Tab1</div>
+        <div class="tab">Tab2</div>
+        <div class="tab">Tab3</div>
+        <div class="tab">Tab4</div>
+      </div>
+      <div class="tab-body">
+        <div class="tab-content active">Tab Content1</div>
+        <div class="tab-content">Tab Content2</div>
+        <div class="tab-content">Tab Content3</div>
+        <div class="tab-content">Tab Content4</div>
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+  ;(function(win, undefined) {
+    'use strict';
+
+    let doc = window.document;
+    let oTabs = doc.getElementsByClassName('tab');
+    let oTabContents = doc.getElementsByClassName('tab-content');
+
+    let initEvents = function() {
+      for (let i = 0, len = oTabs.length; i < len; i++) {
+        oTabs[i].addEventListener('click', function(e) {
+          
+          // let index = oTabs.indexOf(e.target);
+          // console.log(index);
+
+        }, false);
+      }
+    };
+
+    win.onload = initEvents;
+  })(window);
+  </script>
+</body>
+</html>
