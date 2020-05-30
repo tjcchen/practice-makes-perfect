@@ -1,0 +1,53 @@
+/**
+ * Tab Switch Component
+ * 
+ * @Date 2020-05-30
+ */
+
+* { padding: 0; margin: 0; }
+
+.content {
+  margin: 90px auto 0;
+  width: 1000px;
+  text-align: center;
+}
+
+.tab-container {
+  margin-top: 10px;
+}
+
+.tab-header .tab {
+  width: 248px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: -4px;
+  display: inline-block;
+  cursor: pointer;
+  background: #f1f1f1;
+  border-right: 2px solid #ccc;
+  -webkit-transition: all linear 300ms;
+  transition: all linear 300ms;
+}
+
+.tab-header .tab:hover {
+  background: #ccc;
+}
+
+.tab-header .tab.active {
+  background: #ccc;
+}
+
+.tab-header .first-tab {
+  margin-left: 0;
+}
+
+.tab-body .tab-content {
+  display: none;
+  height: 400px;
+  line-height: 400px;
+  background: #ccc;
+}
+
+.tab-body .tab-content.active {
+  display: block;
+}
