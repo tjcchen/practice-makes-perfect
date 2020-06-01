@@ -33,7 +33,6 @@
 
       fnToBind = function() {
         let ret1, ret2;
-
         try {
           ret1 = f1.apply(this, arguments);
         } catch(e1) {
@@ -45,7 +44,6 @@
         } catch(e2) {
           setTimeout(function() { throw e2; }, 0);
         }
-
         return ret1 === undefined ? ret2 : ret1;
       };
 
