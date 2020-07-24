@@ -4,7 +4,7 @@
   <br/><br/>
   The project includes most common use FE components encapsulation: Ajax, Tabs, Slider, Parallax Scrolling, Waterfall etc.
   <br/><br/>
-  Spring Boots relevant technology stack.
+  Spring Boots and Spring MVC relevant technology stack.
 </p>
 
 <h2>Contact</h2>
