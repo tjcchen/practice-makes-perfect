@@ -6,15 +6,35 @@
   <title>Javascript basic interview questions</title>
 </head>
 <body>
+<div>Array Flatten - Convert multi-dimension array to uni-dimension array</div>
+
 <script type="text/javascript">
-<div>
-  Array Flatten - convert multi-dimension array to uni-dimension array
-</div>
 (function() {
   "use strict";
 
-  
+  const arr = [1, [2, [3, [4, 5]]], 6];
 
+  // solution 1
+  const result1 = arr.flat(Infinity); // argument 3 is sufficient to expand 
+  console.log(result1); // [1, 2, 3, 4, 5, 6]
+
+  // solution 2
+  const result2 = JSON.stringify(arr).replace(/\[|\]/g, '').split(',');
+  console.log(result2); // ["1", "2", "3", "4", "5", "6"]
+
+  // solution 3
+  const result3 = JSON.parse('['+ JSON.stringify(arr).replace(/\[|\]/g, '') +']');
+  console.log(result3); // [1, 2, 3, 4, 5, 6]
+
+  // solution 4
+  const flatten = (arr) => {
+    return arr.reduce((accum, cur) => {
+      return accum.concat(Array.isArray(cur) ? flatten(cur) : cur);
+    }, []);
+  }
+
+  const result4 = flatten(arr);
+  console.log(result4); // [1, 2, 3, 4, 5, 6]
 })();
 </script>
 </body>
