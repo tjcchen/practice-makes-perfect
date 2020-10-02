@@ -35,6 +35,17 @@
 
   const result4 = flatten(arr);
   console.log(result4); // [1, 2, 3, 4, 5, 6]
+
+  // solution 5
+  const result5 = [];
+  const fn = (arr) => {
+    for (let i = 0, j = arr.length; i < j; i++) {
+      Array.isArray(arr[i]) ? fn(arr[i]) : result5.push(arr[i]);
+    }
+  }
+
+  fn(arr);
+  console.log(result5); // [1, 2, 3, 4, 5, 6]
 })();
 </script>
 </body>
