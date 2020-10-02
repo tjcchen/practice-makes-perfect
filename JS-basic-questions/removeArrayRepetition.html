@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Array Repetition</title>
+</head>
+<body>
+<div>Remove Array Repetition</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
+
+  // solution 1
+  const result1 = Array.from(new Set(arr));
+  console.log(result1); // [1, "1", 17, true, false, "true", "a", {}, {}]
+
+  // solution 2
+  const unique1 = (arr) => {
+    let i, j, len = arr.length;
+
+    for (i = 0; i < len; i++) {
+      for (j = i + 1; j < len; j++) {
+        if (arr[i] === arr[j]) {
+          arr.splice(j, 1); // remove array element when they are identical
+
+          len--; // len-- is to improve array performance
+          j--; // this is to guarantee value j is constant
+        }
+      }
+    }
+
+    return arr;
+  };
+
+  const result2 = unique1(arr);
+  console.log(result2); // [1, "1", 17, true, false, "true", "a", {}, {}]
+
+  // solution 3
+  const unique2 = (arr) => {
+    const retArr = [];
+
+    for (let i = 0, len = arr.length; i < len; i++) {
+      if (retArr.indexOf(arr[i]) === -1) {
+        retArr.push(arr[i]); // append array element when result array does not contain this element
+      }
+    }
+
+    return retArr;
+  };
+
+  const result3 = unique2(arr);
+  console.log(result3); // [1, "1", 17, true, false, "true", "a", {}, {}]
+})();
+</script>
+</body>
+</html>
