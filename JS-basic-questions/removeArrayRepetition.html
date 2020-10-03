@@ -12,20 +12,21 @@
 (function() {
   'use strict';
 
-  const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
+  let arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
 
   // solution 1
-  const result1 = Array.from(new Set(arr));
-  console.log(result1); // [1, "1", 17, true, false, "true", "a", {}, {}]
+  const result = Array.from(new Set(arr));
+  console.log(result); // [1, "1", 17, true, false, "true", "a", {}, {}]
 
   // solution 2
+  // todo: find out difference between normal function and array function
   const unique1 = (arr) => {
-    let i, j, len = arr.length;
+    let len = arr.length;
 
-    for (i = 0; i < len; i++) {
-      for (j = i + 1; j < len; j++) {
+    for (let i = 0; i < len; i++) {
+      for (let j = i + 1; j < len; j++) {
         if (arr[i] === arr[j]) {
-          arr.splice(j, 1); // remove array element when they are identical
+          arr.splice(j, 1); // remove array element when they are identical [todo: check out this place]
 
           len--; // len-- is to improve array performance
           j--; // this is to guarantee value j is constant
@@ -36,8 +37,7 @@
     return arr;
   };
 
-  const result2 = unique1(arr);
-  console.log(result2); // [1, "1", 17, true, false, "true", "a", {}, {}]
+  console.log(unique1(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
 
   // solution 3
   const unique2 = (arr) => {
@@ -52,8 +52,51 @@
     return retArr;
   };
 
-  const result3 = unique2(arr);
-  console.log(result3); // [1, "1", 17, true, false, "true", "a", {}, {}]
+  console.log(unique2(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
+
+  // todo: reassign array value
+  arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
+
+  // solution 4
+  const unique3 = (arr) => {
+    const retArr = [];
+
+    for (let i = 0, len = arr.length; i < len; i++) {
+      if (!retArr.includes(arr[i])) {
+        retArr.push(arr[i]);
+      }
+    }
+
+    return retArr;
+  }
+
+  console.log(unique3(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
+
+  // solution 5
+  const unique4 = (arr) => {
+    return arr.filter((item, index) => {
+      return arr.indexOf(item) === index; // return true when the element found for the very first time
+    });
+  }
+
+  console.log(unique4(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
+
+  // solution 6
+  const unique5 = (arr) => {
+    const map = new Map();
+    const retArr = [];
+
+    for (let i = 0, len = arr.length; i < len; i++) {
+      if (!map.has(arr[i])) {
+        map.set(arr[i], true);
+        retArr.push(arr[i]);
+      }
+    }
+
+    return retArr;
+  }
+
+  console.log(unique5(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
 })();
 </script>
 </body>
