@@ -21,12 +21,13 @@
   // solution 2
   // todo: find out difference between normal function and array function
   const unique1 = (arr) => {
-    let len = arr.length;
+    let clonedArr = [...arr]; // copy array
+    let len = clonedArr.length;
 
     for (let i = 0; i < len; i++) {
       for (let j = i + 1; j < len; j++) {
-        if (arr[i] === arr[j]) {
-          arr.splice(j, 1); // remove array element when they are identical [todo: check out this place]
+        if (clonedArr[i] === clonedArr[j]) {
+          clonedArr.splice(j, 1); // remove array element when they are identical
 
           len--; // len-- is to improve array performance
           j--; // this is to guarantee value j is constant
@@ -34,7 +35,7 @@
       }
     }
 
-    return arr;
+    return clonedArr;
   };
 
   console.log(unique1(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
@@ -53,9 +54,6 @@
   };
 
   console.log(unique2(arr)); // [1, "1", 17, true, false, "true", "a", {}, {}]
-
-  // todo: reassign array value
-  arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
 
   // solution 4
   const unique3 = (arr) => {
