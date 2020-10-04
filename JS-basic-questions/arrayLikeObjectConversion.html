@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array-like Object Conversion</title>
+</head>
+<body>
+<div>Convert array-like object to regular array</div>
+<div>div1</div>
+<div>div2</div>
+<div>div3</div>
+<div>div4</div>
+<div>div5</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  // most common used array-like object: arguments, DOM elements
+
+  // solution 1: Array.from
+  const arr1 = Array.from(document.querySelectorAll('div'));
+  arr1.push(222);
+  console.log(arr1); // [div, div, div, div, div, div, 222]
+
+  // solution 2: Array.prototype.slice.call()
+  const arr2 = Array.prototype.slice.call(document.querySelectorAll('div'));
+  arr2.push(333);
+  console.log(arr2); // [div, div, div, div, div, div, 333]
+
+  // solution 3: es6 spread operator
+  const arr3 = [...document.querySelectorAll('div')];
+  arr3.push(111);
+  console.log(arr3); // [div, div, div, div, div, div, 111]
+
+  // solution 4: concat
+  const arr4 = Array.prototype.concat.apply([], document.querySelectorAll('div'));
+  arr4.push(555);
+  console.log(arr4); // [div, div, div, div, div, div, 555]
+})();
+</script>
+</body>
+</html>
