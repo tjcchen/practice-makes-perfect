@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Filter</title>
+</head>
+<body>
+<div>Array Filter Implementation</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  Array.prototype.filter = function(callback, thisArg) {
+    if (typeof this === 'undefined') {
+      throw new TypeError('this is null or not defined');
+    } 
+    
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
+
+    const res = [];
+    const Obj = Object(this);
+    
+    // doc1: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift
+    // doc2: https://stackoverflow.com/questions/1822350/what-is-the-javascript-operator-and-how-do-you-use-it
+    const len = Obj.length >>> 0;
+
+    for (let i = 0; i < len; i++) {
+      if (i in Obj) {
+        if (callback.call(thisArg, Obj[i], i, Obj)) {
+          res.push(Obj[i]);
+        }
+      }
+    }
+
+    return res;
+  };
+
+  const arr = [1, 2, 3, 4, 5].filter(function(value) {
+    // Filter numbers larger than 3
+    return value >= 3;
+  });
+
+  console.log(arr); // [3, 4, 5]
+})();
+</script>
+</body>
+</html>
