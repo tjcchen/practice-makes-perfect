@@ -12,9 +12,29 @@
   'use strict';
 
   Array.prototype.map = function(callback, thisArg) {
+    if (typeof this === 'undefined') {
+      throw new TypeError('this is null or not defined');
+    }
 
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + ' is not a function');
+    }
 
+    const res = [];
+    const Obj = Object(this);
+    const len = Obj.length >>> 0;
+    
+    for (let i = 0; i < len; i++) {
+      if (i in Obj) {
+        res[i] = callback.call(this.thisArg, Obj[i], i, this);
+      }
+    }
+
+    return res;
   };
+
+  const mapRet = [1, 2, 3, 4, 5].map(value => value * 2);
+  console.log(mapRet);
 })();
 </script>
 </body>
