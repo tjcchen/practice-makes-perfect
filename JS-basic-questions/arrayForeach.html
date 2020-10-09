@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Foreach Implementation</title>
+</head>
+<body>
+<div>Array Foreach Implementation</div>
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  Array.prototype.forEach = function(callback, thisArg) {
+    if (this == null) {
+      throw new TypeError('this is null or not defined');
+    }
+
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + ' is not a function');
+    }
+
+    const O = Object(this);
+    const len = O.length >>> 0;
+    let k = 0;
+
+    while (k < len) {
+      if (k in O) {
+        callback.call(thisArg, O[k], k, O);
+      }
+      k++;
+    }
+  };
+
+  [1, 2, 3, 4, 5].forEach((item, index) => {
+    console.log(index + ': ' + item);
+    console.log('\r\n');
+  });
+})();
+</script>
+</body>
+</html>
