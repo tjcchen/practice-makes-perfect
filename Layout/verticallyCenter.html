@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7 Approaches to Do Vertically Centering</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Approaches to Do Vertically Centering</title>
+<style type="text/css">
+/* 1. line-height */
+.div1 {
+  width: 200px;
+  height: 150px;
+  line-height: 150px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.div1 .redbox {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: #f00;
+}
+</style>
 </head>
 <body>
-<div>7 Approaches to Do Vertically Centering</div>
-<script type="text/javascript">
-(function() {
-  'use strict';
+  <div>7 Approaches to Do Vertically Centering</div>
+
+  <h2>1. line-height</h2>
+  <div class="div1">
+    <div class="redbox"></div>
+  </div>
 
   
-})();
-</script>
 </body>
 </html>
