@@ -62,6 +62,44 @@
   vertical-align: middle;
   background: #f00;
 }
+
+/* 3. calc */
+.div3 {
+  width: 200px;
+  height: 150px;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.div3 .redbox {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #f00;
+  float: left;
+  top: calc(50% - 15px);
+  margin-left: calc(50% - 45px);
+}
+
+.div3 .greenbox {
+  position: absolute;
+  width: 30px;
+  height: 80px;
+  background: #0f0;
+  float: left;
+  top: calc(50% - 40px);
+  margin-left: calc(50% - 10px);
+}
+
+.div3 .bluebox {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  background: #00f;
+  float: left;
+  top: calc(50% - 20px);
+  margin-left: calc(50% + 25px);
+}
 </style>
 </head>
 <body>
@@ -79,5 +117,11 @@
     <div class="bluebox"></div>
   </div>
 
+  <h2>3. calc</h2>
+  <div class="div3">
+    <div class="redbox"></div>
+    <div class="greenbox"></div>
+    <div class="bluebox"></div>
+  </div>
 </body>
 </html>
