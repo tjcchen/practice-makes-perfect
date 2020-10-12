@@ -101,7 +101,7 @@
   margin-left: calc(50% + 25px);
 }
 
-/* 4. take vertically centering */
+/* 4. table vertically centering */
 .div4 .like-table {
   display: table-cell;
 }
@@ -130,6 +130,61 @@
 
 .div4 .like-table div {
   background: #00f;
+}
+
+/* 5. transform */
+.div5 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.div5 .use-transform {
+  position: relative;
+  width: 140px;
+  height: 50px;
+  line-height: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #095;
+}
+
+/* 6. absolute */
+.div6 {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #000;
+}
+
+.div6 .use-absolute {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background: #f00;
+}
+
+/* 7. flexbox */
+.div7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #000;
+}
+
+.div7 .use-flexbox {
+  width: 50px;
+  height: 50px;
+  background: #0f0;
 }
 </style>
 </head>
@@ -167,6 +222,21 @@
     <div class="like-table">
       <div>fake table centering</div>
     </div>
+  </div>
+
+  <h2>5. transform</h2>
+  <div class="div5">
+    <div class="use-transform">transform inner box</div>
+  </div>
+
+  <h2>6. absolute</h2>
+  <div class="div6">
+    <div class="use-absolute"></div>
+  </div>
+
+  <h2>7. flexbox</h2>
+  <div class="div7">
+    <div class="use-flexbox"></div>
   </div>
 </body>
 </html>
