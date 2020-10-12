@@ -1,10 +1,6 @@
 <h2>Interviews</h2>
 <p>
-  Personal private project for front-end interview preparations. 
-  <br/><br/>
-  The project includes most common use FE components encapsulation: Ajax, Tabs, Slider, Parallax Scrolling, Waterfall etc.
-  <br/><br/>
-  <!-- p>Spring Boots and Spring MVC relevant technology stack.</p -->
+  Personal private project for front-end interview preparations.
 </p>
 
 <h2>Contact</h2>
