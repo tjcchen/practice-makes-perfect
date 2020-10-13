@@ -33,7 +33,25 @@ body {
   /* important */
   display: flex;  /* or inline-flex */
   justify-content: center;
-  /* align-items: center; */
+  /* align-items: center; */ /* or place-content: center; or place-content: center; place-items: center; */
+
+  /* Conclusion: similar effects */
+  /*
+  // single inline element
+  .flex__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // multiple inline elements
+  .flex__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  */
 
   border-radius: 5px;
   box-shadow: 0 20px 30px rgba(0,0,0,0.6);
