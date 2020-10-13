@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 
   border-radius: 5px;
   box-shadow: 0 20px 30px rgba(0,0,0,0.6);
@@ -52,6 +52,7 @@ body {
 }
 .flex__container > * {
   flex-shrink: 0;
+  align-self: center;  /* use align-self: center; when container has multiple elements */
 }
 .avatar {
   inline-size: 64px;

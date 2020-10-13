@@ -31,9 +31,9 @@ body {
   block-size: 50vh;
 
   /* important */
-  display: flex;
+  display: flex;  /* or inline-flex */
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 
   border-radius: 5px;
   box-shadow: 0 20px 30px rgba(0,0,0,0.6);
@@ -56,6 +56,9 @@ body {
   padding: 4vh;
   background: #7b44bc;
   border-radius: 4px;
+
+  /* note: if you do not add align-items: center; in parent node, you'll need to add align-self: center in children elements */
+  align-self: center;
 }
 </style>
 </head>
