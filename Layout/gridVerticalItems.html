@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Vertical Items</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to right, #44ea76 0%,#39fad7 80%, #39fad7 100%) no-repeat;
+}
+.grid__container {
+  inline-size: 50vw;
+  block-size: 50vh;
+
+  /* important */
+  display: grid;
+  place-items: center;
+
+  border-radius: 5px;
+  padding: 4vh;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  resize: both;
+
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  backdrop-filter: blur(3px);
+}
+.avatar {
+  inline-size: 64px;
+  block-size: 64px;
+  background-color: #574d4d;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+
+  /* important */
+  display: inline-grid;
+  place-content: center;
+}
+.media__heading {
+  height: 32px;
+  width: 30%;
+  background: #574d4d;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.media__content {
+  height: 32px;
+  width: 60%;
+  background-color: #574d4d;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.action {
+  width: 136px;
+  height: 38px;
+  background-color: #574d4d;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+  <div class="grid__container">
+    <div class="avatar">:)</div>
+    <div class="media__heading"></div>
+    <div class="media__content"></div>
+    <div class="action"></div>
+  </div>
+  
+  <!-- Please note the difference between property place-items and place-content -->
+
+</body>
+</html>
