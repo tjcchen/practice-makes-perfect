@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equal Height Layout with Flex</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+  padding: 2vh;
+
+  /* IMPORTANT */
+  /* when parent container set 'display:flex', its children elelments will set 'align-items:stretch' by default */
+  display: flex;
+  justify-content: space-between;
+}
+body > *:not(script) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #607d8b;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 2px rgba(78, 73, 73, 0.25);
+}
+body > *:not(main) {
+  min-width: 20vw;
+}
+body > main {
+  flex: 1;
+  margin: 0 2vh;
+}
+</style>
+</head>
+<body>
+<nav>
+  <p>Nav Section</p>
+</nav>
+<main>
+  <p>Main Section</p>
+</main>
+<aside>
+  <p>Aside Section</p>
+</aside>
+</body>
+</html>
