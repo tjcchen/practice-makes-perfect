@@ -19,6 +19,7 @@ body {
   /* IMPORTANT */
   /* when parent container set 'display:flex', its children elelments will set 'align-items:stretch' by default */
   display: flex;
+  align-items: stretch; /* explicitly added */
   justify-content: space-between;
 }
 body > *:not(script) {
@@ -35,6 +36,9 @@ body > *:not(main) {
   min-width: 20vw;
 }
 body > main {
+  /* IMPORTANT */
+  /* flex is a combination of three properties: flex-grow, flex-shrink, flex-basis */
+  /* this means flex-grow: 1; */
   flex: 1;
   margin: 0 2vh;
 }
