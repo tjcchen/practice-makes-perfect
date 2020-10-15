@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex Three Columns</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+  padding: 2vh;
+  
+  display: flex;
+  justify-content: space-between;
+}
+body > *:not(script) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #607d8b;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.25);
+}
+body > *:not(main) {
+  min-width: 20vw;
+}
+body > main {
+  flex: 1;
+  margin: 0 2vh;
+}
+nav .content, aside .content {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav .content {
+  background-color: #f36;
+}
+aside .content {
+  background-color: #f90;
+}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="content">
+      <p>Nav Section</p>
+    </div>
+  </nav>
+
+  <main>
+    <div class="content">
+      <p>Main Section</p>
+    </div>
+  </main>
+
+  <aside>
+    <div class="content">
+      <p>Aside Section</p>
+    </div>
+  </aside>
+</body>
+</html>
