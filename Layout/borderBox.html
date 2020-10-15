@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box-sizing Border-box Layout</title>
+<style type="text/css">
+*, *:before, *:after { box-sizing: border-box; }
+.parent {
+  width: 50%;
+  border: 5px solid #E18728;
+  float: left;
+}
+.child {
+  width: 90%;
+  padding: 20%;
+  border: 4px solid black;
+  margin: 10px auto;
+}
+.twins {
+  width: 50%;
+  padding: 20px;
+  border: 4px solid black;
+  float: left;
+}
+</style>
+</head>
+<body>
+  <div class="parent">
+    <p>Parent div with 50% width</p>
+    <div class="child">
+      <p>Child div with 90% width, 4px black border, and 20% padding</p>
+    </div>
+    <div class="twins">
+      <p>Child div with 50% width, 4px black border, and 20px padding</p>
+    </div>
+    <div class="twins">
+      <p>Child div with 50% width, 4px black border, and 20px padding</p>
+    </div>
+  </div>
+</body>
+</html>
