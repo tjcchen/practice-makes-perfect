@@ -13,6 +13,9 @@ body {
   padding: 1vh;
 }
 .flex__container {
+  /* IMPORTANT */
+  /* property 'flex-wrap:wrap;' allow items can be flowed into multiple lines */
+  /* resource: https://css-tricks.com/almanac/properties/f/flex-wrap/ */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -31,6 +34,9 @@ body {
   flex-direction: column;
   align-items: center;
 
+  /* IMPORTANT */
+  /* flex: flex-grow flex-shrink flex-basis */
+  /* flex-basis defines the default size of an element, its default value is auto */
   flex: 1 1 25vw;
 }
 .avatar {
