@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calc Equal Width Columns</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%) no-repeat;
+  background-size: cover;
+}
+.container {
+  inline-size: 50vw;
+  border-radius: 5px;
+  min-inline-size: 320px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  resize: horizontal;
+
+  display: flex;
+  flex-direction: row;
+
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  backdrop-filter: blur(3px);
+}
+.column {
+  /* IMPORTANT */
+  width: calc(100% / 3);
+  height: 100%;
+  padding: 2vh 0;
+  float: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.svg__wrapper {
+  width: 88px;
+  height: 88px;
+  background-color: #7b44bc;
+  border-radius: 50%;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+svg {
+  font-size: 2rem;
+  width: 1.2em;
+  height: 1.2em;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="column">
+      <div class="svg__wrapper">
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="200" height="200" class="icon" viewBox="0 0 1024 1024">
+          <path d="M824 388h-99V277c0-117.4-95.6-213-213-213s-213 95.6-213 213v111h-99c-39.7 0-72 32.3-72 72v428c0 39.7 32.3 72 72 72h624c39.7 0 72-32.3 72-72V460c0-39.7-32.3-72-72-72zM548 745c0 19.9-16.1 36-36 36s-36-16.1-36-36V601c0-19.9 16.1-36 36-36s36 16.1 36 36v144z m105-357H371V277c0-77.7 63.3-141 141-141s141 63.3 141 141v111z" fill="currentColor" />
+        </svg>
+      </div>
+    </div>
+    <div class="column">
+      <div class="svg__wrapper">
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="200" height="200" class="icon" viewBox="0 0 1024 1024">
+          <path d="M922.282667 448.128l-243.797334-260.309333a53.845333 53.845333 0 0 0-28.245333-16.085334 51.2 51.2 0 0 0-31.701333 3.584 56.32 56.32 0 0 0-24.576 21.973334c-5.973333 9.813333-9.216 21.333333-9.216 33.066666v130.986667c-110.08 9.258667-215.381333 52.266667-303.701334 124.032-88.32 71.765333-155.989333 169.301333-195.072 281.173333a12.885333 12.885333 0 0 0-0.213333 7.253334 12.032 12.032 0 0 0 3.712 6.101333 10.325333 10.325333 0 0 0 12.757333 0.768c145.792-96.426667 311.850667-151.168 482.517334-159.018667v129.322667c0 11.776 3.2 23.253333 9.216 33.066667 6.016 9.813333 14.592 17.450667 24.576 21.973333 10.026667 4.565333 21.077333 5.802667 31.701333 3.584 10.666667-2.218667 20.48-7.808 28.245333-16.085333l243.797334-260.266667c5.205333-5.589333 9.301333-12.202667 12.117333-19.541333a64.256 64.256 0 0 0 0-46.08 60.373333 60.373333 0 0 0-12.117333-19.498667z" fill="currentColor" />
+        </svg>
+      </div>
+    </div>
+    <div class="column">
+      <div class="svg__wrapper">
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="200" height="200" class="icon" viewBox="0 0 1024 1024">
+          <path d="M875.1 428H597.5V150.4c0-47.1-38.1-85.2-85.2-85.2s-85.2 38.1-85.2 85.2V428H149.4c-47.1 0-85.2 38.1-85.2 85.2s38.1 85.2 85.2 85.2H427V876c0 47.1 38.1 85.2 85.2 85.2s85.2-38.1 85.2-85.2V598.4H875c47.1 0 85.2-38.1 85.2-85.2s-38-85.2-85.1-85.2z" fill="currentColor" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
