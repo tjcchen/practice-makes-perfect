@@ -5,7 +5,7 @@
 
 <h2>Contact</h2>
 <p>
-  Email: <a href="mailto:chenyangpoppin@gmail.com">chenyangpoppin[AT]gmail.com</a>
+  Email: <a href="mailto:tjcchen.engineer@gmail.com">tjcchen.engineer[AT]gmail.com</a>
 </p>
 
 <h2>License</h2>
