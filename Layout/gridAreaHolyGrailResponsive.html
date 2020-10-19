@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Area Holy Grail Responsive</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+}
+header {
+  background-color: #2196f3;
+  min-height: 15vh;
+}
+main {
+  background-color: #795548;
+  color: #fff;
+}
+footer {
+  min-height: 20vh;
+  background-color: #222;
+}
+nav {
+  background-color: #ff9800;
+  color: #fff;
+}
+aside {
+  background-color: #607d8b;
+  color: #fff;
+}
+h2 {
+  text-align: center;
+  margin: 2vh 0;
+}
+
+/* IMPORTANT */
+/* Layout Section */
+body {
+  display: grid;
+  /* grid-template-areas:  */
+    /* "header header header"
+    "nav main aside"
+    "footer footer footer"; */
+
+    /* "header header header header header"
+    "nav main main main aside"
+    "footer footer footer footer footer"; */
+
+  grid-template-areas:
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+  grid-template-columns: 220px 1fr 220px;
+  grid-template-rows: auto 1fr auto;
+}
+header {
+  grid-area: header;
+}
+main {
+  grid-area: main;
+}
+nav {
+  grid-area: nav;
+}
+aside {
+  grid-area: aside;
+}
+footer {
+  grid-area: footer;
+}
+
+/* Responsive Support */
+@media screen and (max-width: 800px) {
+  /* body {
+    grid-template-areas: 
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+  } */
+
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <h2>Header Section</h2>
+  </header>
+
+  <main>
+    <h2>Main Section</h2>
+  </main>
+  <nav>
+    <h2>Nav Section</h2>
+  </nav>
+  <aside>
+    <h2>Aside Section</h2>
+  </aside>
+
+  <footer>
+    <h2>Footer Section</h2>
+  </footer>
+</body>
+</html>
