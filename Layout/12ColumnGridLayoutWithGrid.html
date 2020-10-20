@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Columns Grid Layout with Grid</title>
+<style type="text/css">
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+  padding: 2vh;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: row; /* explicitly added */
+  justify-content: center;
+  align-items: center;
+}
+.grid__container {
+  inline-size: 60vw;
+  border-radius: 5px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+  overflow: hidden;
+  resize: horizontal;
+
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  backdrop-filter: blur(3px);
+}
+.grid__item {
+  background-color: #607d8b;
+}
+
+/* IMPORTANT */
+:root {
+  --columns: 12;
+  --gap: 10px;
+  --span: 1;
+}
+.grid__container {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: 1fr;
+
+  /* resource: https://css-tricks.com/snippets/css/complete-guide-grid/ */
+  /* note: you can think of gap like setting the width of the gutters between the columns/rows */
+  /* gap: row-gap column-gap; */
+  gap: var(--gap);
+
+  padding-left: calc(var(--gap) / 2);
+  padding-right: calc(var(--gap) / 2);
+}
+.grid__item {
+  min-block-size: 10vh;
+
+  /* grid-column: span 2; the number represents the columns that the current cell occupied */
+  grid-column: span var(--span);
+}
+.col1 {
+  --span: 1;
+}
+.col2 {
+  --span: 2;
+}
+.col3 {
+  --span: 3;
+}
+.col4 {
+  --span: 4;
+}
+.col5 {
+  --span: 5;
+}
+.col6 {
+  --span: 6;
+}
+.col7 {
+  --span: 7;
+}
+.col8 {
+  --span: 8;
+}
+.col9 {
+  --span: 9;
+}
+.col10 {
+  --span: 10;
+}
+.col11 {
+  --span: 11;
+}
+.col12 {
+  --span: 12;
+}
+</style>
+</head>
+<body>
+  <div class="grid__container">
+    <div class="grid__item col1"></div>
+    <div class="grid__item col2"></div>
+    <div class="grid__item col3"></div>
+    <div class="grid__item col4"></div>
+    <div class="grid__item col2"></div>
+  
+    <div class="grid__item col5"></div>
+    <div class="grid__item col6"></div>
+    <div class="grid__item col1"></div>
+
+    <div class="grid__item col7"></div>
+    <div class="grid__item col5"></div>
+
+    <div class="grid__item col8"></div>
+    <div class="grid__item col4"></div>
+  
+    <div class="grid__item col3"></div>
+    <div class="grid__item col9"></div>
+  
+    <div class="grid__item col2"></div>
+    <div class="grid__item col10"></div>
+  
+    <div class="grid__item col11"></div>
+    <div class="grid__item col1"></div>
+  
+    <div class="grid__item col12"></div>
+  
+    <div class="grid__item col3"></div>
+    <div class="grid__item col3"></div>
+    <div class="grid__item col3"></div>
+    <div class="grid__item col3"></div>
+  
+    <div class="grid__item col4"></div>
+    <div class="grid__item col4"></div>
+    <div class="grid__item col4"></div>
+
+    <div class="grid__item col6"></div>
+    <div class="grid__item col6"></div>
+  </div>
+</body>
+</html>
