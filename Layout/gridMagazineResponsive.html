@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Magazine Responsive</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #291642;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+  color: #fff;
+  padding: 2vh;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid__container {
+  inline-size: 50vw;
+  border-radius: 5px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+  overflow: hidden;
+  resize: horizontal;
+
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  backdrop-filter: blur(3px);
+}
+.grid__item {
+  background-color: rgba(200, 200, 255, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05);
+  min-block-size: 10vh;
+}
+
+/* IMPORTANT */
+.grid__container {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 1em;
+
+  /* IMPORTANT */
+  /* resource: https://css-tricks.com/responsive-grid-magazine-layout-in-just-20-lines-of-css/ */
+  /* adding grid-auto-flow: dense to the grid element which tells the browser to fill in any gaps with other items, effectively making the narrower content flow around the wider items */
+  grid-auto-flow: dense;
+}
+.grid__item:nth-child(1) {
+  /* grid-column: 1 / -1; means select from 1st line to the last line */
+  grid-column: 1 / -1;
+  background: rgba(255, 200, 255, 0.3);
+}
+.grid__item:nth-child(3) {
+  grid-column: span 5;
+  grid-row: span 2;
+  background: rgba(255, 200, 255, 0.3);
+}
+.grid__item:nth-child(5) {
+  grid-column: span 5;
+  background: rgba(255, 200, 255, 0.3);
+}
+.grid__item:nth-child(7) {
+  grid-column: span 3;
+}
+.grid__item:nth-child(8) {
+  grid-column: -3 / -1;
+}
+.grid__item:nth-child(12) {
+  grid-column: 1 / -2;
+  background: rgba(255, 200, 255, 0.3);
+}
+.grid__item:nth-last-child(8) {
+  grid-row: span 2;
+  background: rgba(255, 200, 255, 0.3);
+}
+.grid__item:nth-last-child(4) {
+  grid-column: span 4;
+  background: rgba(255, 200, 255, 0.3);
+}
+</style>
+</head>
+<body>
+  <div class="grid__container">
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+    <div class="grid__item"></div>
+  </div>
+</body>
+</html>
