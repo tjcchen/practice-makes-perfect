@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Centering with object-fit</title>
+<style type="text/css">
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f1f1f1;
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 60vw;
+}
+.brands, .brands li {
+  list-style-type: none;
+  margin: 0; 
+  padding: 0;
+}
+.brands {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 2rem;
+
+  box-shadow: 0 20px 30px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.brands__item {
+  color: #eee;
+}
+.brands__item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.brands__item img {
+  width: 130px;
+  height: 100px;
+
+  /* IMPORTANT */
+  /* resource: https://css-tricks.com/almanac/properties/o/object-fit/ */
+  /* the object-fit property defines how an element responds to the height and width of its content box */
+  /* it is used for images, videos and other embeddable media format */
+  object-fit: contain;
+
+  /* resource: https://css-tricks.com/almanac/properties/m/mix-blend-mode/ */
+  /* the mix-blend-mode property defines how an element’s content should blend with its background */
+  /* multiply: the element is multiplied by the background and replaces the background color, */
+  /* the resulting color is always as dark as the background */
+  mix-blend-mode: multiply;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <ul class="brands">
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/tripadvisor.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/google.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/facebook.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/amazon.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/linkedin.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/baidu.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/taobao.jpg" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/tencent.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/apple.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/netflix.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/microsoft.png" />
+        </a>
+      </li>
+      <li class="brands__item">
+        <a href="javascript:;">
+          <img src="../Assets/image/airbnb.png" />
+        </a>
+      </li>
+    </ul>
+  </div>  
+</body>
+</html>
