@@ -148,6 +148,28 @@
       });
     }
   }
+
+  //////////////////////
+  // TEST SECTION
+  //////////////////////
+  let promise = new Promise((resolve, reject) => {
+    let result = 1 + 3;
+    let expect = 2;
+
+    if (result === expect) {
+      resolve('Succeed');
+    } else {
+      reject('Failed')
+    }
+  });
+
+  promise.then(msg => {
+    console.log('Succeed callback: ' + msg);
+  });
+  
+  promise.catch(err => {
+    console.log('Failed callback: ' + err);
+  });
 })(window);
 </script>
 </body>
