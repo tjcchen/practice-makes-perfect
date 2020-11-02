@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Clamp</title>
+<style type="text/css">
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #291642;
+  font-family: sans-serif;
+  font-size: 100%;
+  letter-spacing: 0.1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.element {
+  min-height: 20vh;
+  border-radius: 2vh;
+  background-color: #2196f3;
+
+  /* IMPORTANT */
+  /* usage: clamp(MIN, VAL, MAX); */
+  width: clamp(100px, 50vw, 1000px);
+  font-size: clamp(1rem, 2vw + 1rem, 4rem);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width:1000px) {
+  .element {
+    background-color: #f36;
+  }
+}
+@media (max-width: 200px) {
+  .element {
+    background-color: #3f6;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="element">Element</div>
+  </div>
+</body>
+</html>
