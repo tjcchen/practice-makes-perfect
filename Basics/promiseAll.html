@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promise.all Javascript Implementation</title>
+</head>
+<body>
+<div>Promise.all Javascript Implementation</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  Promise.myAll = function(promiseArr) {
+    return new Promise((resolve, reject) => {
+      const accum = [];
+      let index   = 0;
+      let len     = promiseArr.length;
+
+      for (let i = 0; i < len; i++) {
+        promiseArr[i].then(res => {
+          accum[i] = res; // accumulate response to variable 'accum'
+          index++;
+          
+          if (index === len) {
+            resolve(accum);
+          }
+        }).catch(err => {
+          reject(err);
+        });
+      }
+    });
+  };
+
+  /////////////////
+  // TEST SECTION
+  /////////////////
+  const fn1 = new Promise((resolve, reject) => {
+    resolve('fn1 called');
+  });
+
+  const fn2 = new Promise((resolve, reject) => {
+    resolve('fn2 called');
+  });
+
+  const fn3 = new Promise((resolve, reject) => {
+    resolve('fn3 called');
+  });
+
+  Promise.myAll([fn1, fn2, fn3]).then((messages) => {
+    console.log(messages); // ["fn1 called", "fn2 called", "fn3 called"]
+  });
+})(window);
+</script>
+</body>
+</html>
