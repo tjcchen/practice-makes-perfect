@@ -118,6 +118,8 @@
     }
 
     static all(promiseArr) {
+      console.log('--- self-defined promise.all ---');
+
       const len = promiseArr.length;
       const values = new Array(len);
 
@@ -138,6 +140,8 @@
     }
 
     static race(promiseArr) {
+      console.log('--- self-defined promise.race ---');
+
       return new Promise((resolve, reject) => {
         promiseArr.forEach(p => {
           Promise.resolve(p).then(
@@ -169,6 +173,28 @@
   
   promise.catch(err => {
     console.log('Failed callback: ' + err);
+  });
+
+  // Promise.all
+  const fn1 = new Promise((resolve, reject) => {
+    resolve('fn1 called');
+  });
+
+  const fn2 = new Promise((resolve, reject) => {
+    resolve('fn2 called');
+  });
+
+  const fn3 = new Promise((resolve, reject) => {
+    resolve('fn3 called');
+  });
+
+  Promise.all([fn1, fn2, fn3]).then((messages) => {
+    console.log(messages); // ["fn1 called", "fn2 called", "fn3 called"]
+  });
+
+  // Promise.race
+  Promise.race([fn1, fn2, fn3]).then((message) => {
+    console.log(message); // print out 'fn1 called', the quickest fn in the group will be invoked
   });
 })(window);
 </script>
