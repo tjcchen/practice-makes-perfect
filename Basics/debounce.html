@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debounce</title>
+</head>
+<body>
+<div>
+  <h3>Debounce Use Cases</h3>
+  <p>1. window.resize</p>
+  <p>2. apply debounce to search inputbox to reduce ajax requests to server</p>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const debounce = (fn, time) => {
+    let timeout = null;
+
+    return function() {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        fn.apply(this, arguments);
+      }, time);
+    };
+  };
+
+  const resizeFn = () => {
+    console.log(this);  // undefined, arrow function will not point 'this' to window object
+    console.log('window resize');
+  };
+
+  win.onresize = debounce(resizeFn, 300);
+})(window);
+</script>
+</body>
+</html>
