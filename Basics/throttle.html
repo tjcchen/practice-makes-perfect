@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Throttle</title>
+</head>
+<body>
+<div>
+  <h4>Throttle</h4>
+  <p>Executing function once in n seconds, and reducing the frequency of the function callee</p>
+  <p>Use cases: 1. Click event of a button; 2. Scroll events can fire at a high rate, therefore a throttle needed</p>
+</div>
+<div style="height:2000px"></div>
+<div>Text</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const throttle = (fn, time) => {
+    let flag = true;
+
+    return function() {
+      if (!flag) return;
+      flag = false;
+
+      setTimeout(() => {
+        fn.apply(this, arguments);
+        flag = true;
+      }, time);
+    };
+  };
+
+  const clickFunc = () => {
+    console.log('clickFunc');
+  };
+
+  const scrollFunc = () => {
+    console.log('scrollFunc');
+  };
+
+  win.onclick = throttle(clickFunc, 1000);
+  
+  // docs: https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
+  win.onscroll = throttle(scrollFunc, 1000);
+})(window);
+</script>
+</body>
+</html>
