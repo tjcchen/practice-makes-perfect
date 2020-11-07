@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curring</title>
+</head>
+<body>
+<div>
+  <h3>Currying</h3>
+  <p>In math & computer science, currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each take a single argument.</p>
+  <h4>Interview questions:</h4>
+  <p>1. add(1)(2)(3)(4) = 10</p>
+  <p>2. add(1)(1, 2, 3)(2) = 9</p>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  function add() {
+    // debugger;
+    const _args = [...arguments]; // _args: [1, 2, 3, 4]
+
+    function fn() {
+      _args.push(...arguments);
+      return fn;
+    }
+
+    fn.toString = function() {
+      return _args.reduce((sum, cur) => { return sum + cur; });
+    };
+
+    return fn;
+  }
+
+  let result1 = add(1)(2)(3)(4);
+  console.log(result1);
+
+  let result2 = add(1)(2, 3)(4); // result2 = 10
+  result2 += 3;
+  console.log(result2); // result2 = 13
+})(window);
+</script>
+</body>
+</html>
