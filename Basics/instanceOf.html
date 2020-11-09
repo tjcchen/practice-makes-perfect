@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>instanceof js implementation</title>
+</head>
+<body>
+<div>
+  <h3>instanceof js implementation</h3>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const myInstanceOf = (myInstance, myClass) => {
+    // return false if instance is primitive type
+    if (typeof myInstance !== 'object' || myInstance === null) {
+      return false;
+    }
+
+    // the key of comparison is to compare myInstance prototype and myClass prototype
+    let proto = Object.getPrototypeOf(myInstance);
+  
+    // debugger;
+
+    while (true) {
+      if (proto === null) return false;
+      if (proto === myClass.prototype) return true;
+      proto = Object.getPrototypeOf(proto);
+    }
+  };
+
+  // Declare a Student class
+  const Student = function(name) {
+    this.name = name;
+  };
+
+  Student.prototype.speak = function() {
+    console.log(this.name + ' makes a noise');
+  }
+
+  const stu = new Student('jackie');
+  stu.speak();
+
+  console.log(myInstanceOf(stu, Student)); // true
+})(window);
+</script>
+</body>
+</html>
