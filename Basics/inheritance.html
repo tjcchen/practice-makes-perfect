@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inheritance in JavaScript</title>
+</head>
+<body>
+<div>
+  <h3>Inheritance in JavaScript</h3>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+  
+  function Parent() {
+    this.name = 'name from Parent';
+  }
+
+  Parent.prototype.sayHello = function() {
+    return 'hello from Parent';
+  };
+
+  function Child() {
+    Parent.call(this);
+    this.type = 'type from Child';
+  }
+
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
+  Child.prototype.print = function() {
+    return this.name + ', ' + this.type;
+  };
+
+  //////////////////////////
+  // TEST SECTION
+  //////////////////////////
+  const child = new Child();
+  console.log(child.sayHello()); // hello from Parent
+  console.log(child.print()); // name from Parent, type from Child
+})(window);
+</script>
+</body>
+</html>
