@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inheritance with Class</title>
+</head>
+<body>
+<div>
+  <h2>Inheritance with Class</h2>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  /**
+   * Person Class
+   */
+  class Person {
+    constructor(first, last, age, gender, interests) {
+      this.name = {
+        first,
+        last
+      };
+
+      this.age = age;
+      this.gender = gender;
+      this.interests = interests;
+    }
+
+    greeting() {
+      console.log(`Hi! I'm ${this.name.first}`);
+    }
+
+    farewell() {
+      console.log(`${this.name.first} has left the building. Bye for now!`);
+    }
+  }
+
+  const jackson = new Person('jackson', 'lee', 21, 'male', ['basketball']);
+  jackson.greeting(); // Hi! I'm jackson
+  jackson.farewell(); // jackson has left the building. Bye for now!
+
+  /**
+   * Teacher Class
+   */
+  class Teacher extends Person {
+    constructor(first, last, age, gender, interests, subject, grade) {
+      super(first, last, age, gender, interests); // now 'this' is initialized by calling the parent constructor
+      this.subject = subject;
+      this.grade = grade;
+    }
+
+    teach() {
+      console.log(`I'm teaching ${this.subject}!`);
+    }
+  }
+
+  const jimmy = new Teacher('jimmy', 'smith', 29, 'female', ['jogging'], 'math', 8);
+  jimmy.greeting(); // Hi! I'm jimmy
+  jimmy.teach(); // I'm teaching math!
+})(window);
+</script>
+</body>
+</html>
