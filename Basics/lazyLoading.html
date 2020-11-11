@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lazy Loading</title>
+<style type="text/css">
+.container {
+  width: 480px;
+  height: 320px;
+  margin-bottom: 10px;
+}
+.container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+</head>
+<body>
+<div>
+  <h2>Lazy Loading</h2>
+  <div class="container">
+    <img class="regular-image" src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="regular-image" src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <div class="container">
+    <img class="lazy-image" src="../Assets/image/lazy-load.jpg" data-src="../Assets/image/mural-zoom.jpg"/>
+  </div>
+  <h2>Bottom Line</h2>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const doc = win.document;
+  const lazyClass = 'lazy-image';
+
+  const lazyLoad = () => {
+    const imgs = doc.getElementsByClassName(lazyClass);
+    const len = imgs.length;
+  
+    // view port height
+    const viewHeight = doc.documentElement.clientHeight;
+    // scrollbar height
+    const scrollHeight = doc.documentElement.scrollTop || doc.body.scrollTop;
+
+    for (let i = 0; i < len; i++) {
+      // the HTMLElement.offsetTop property returns the distance of the current element relative to the top of the offsetParent node
+      const offsetHeight = imgs[i].offsetTop;
+
+      if (offsetHeight < viewHeight + scrollHeight) {
+        const src = imgs[i].dataset.src;
+
+        imgs[i].src = src;
+      }
+    }
+  };
+
+  const throttle = (fn, time) => {
+    let flag = true;
+    return function() {
+      if (!flag) return;
+      flag = false;
+
+      setTimeout(() => {
+        fn.apply(this, arguments);
+        flag = true;
+      }, time);
+    };
+  };
+
+  win.addEventListener('scroll', throttle(lazyLoad, 300));
+})(window);
+</script>
+</body>
+</html>
