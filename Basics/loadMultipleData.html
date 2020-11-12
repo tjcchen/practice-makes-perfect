@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Load Multiple Data</title>
+</head>
+<body>
+<div>
+  <h3>Load 10,000 data to page without performace issue</h3>
+  <p>createDocumentFragment & requestAnimationFrame</p>
+  <h3>Data Section</h3>
+  <ol></ol>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const doc = win.document;
+  const total = 10000;
+  const once = 20;
+  const loopCount = Math.ceil(total / once);
+  const olElem = doc.querySelector('ol');
+
+  let countOfRender = 0;
+
+  // mock fetch data, 20 pieces at a time
+  const mockFetch = () => {
+    const fragment = doc.createDocumentFragment();
+
+    for (let i = 0; i < once; i++) {
+      const liElem = doc.createElement('li');
+      liElem.innerText = ' - ' + Math.floor(Math.random() * total);
+
+      fragment.appendChild(liElem);
+    }
+
+    olElem.appendChild(fragment);
+    countOfRender++;
+    loop();
+  };
+
+  const loop = () => {
+    if (countOfRender < loopCount) {
+      // the window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests
+      // that the browser calls a specified function to update an animation before the next repaint.
+      // The method takes a callback as an argument to be invoked before the repaint.
+      win.requestAnimationFrame(mockFetch);
+    }
+  };
+
+  win.onload = setTimeout(loop, 0);
+})(window);
+</script>
+</body>
+</html>
