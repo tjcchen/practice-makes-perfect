@@ -11,9 +11,10 @@ body {
   text-align: center;
   font-size: 100%;
   font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 .wrapper {
-  width: 1000px;
+  width: 80%;
   margin: 0 auto;
   background: #fff;
   padding: 10px;
@@ -37,7 +38,7 @@ h2 {
 </head>
 <body>
 <div class="wrapper">
-  <h2>Scroll Loading Content Effect</h2>
+  <h2>Scroll Loading Content</h2>
   <div class="main">
     <div class="section first">first section</div>
     <div class="section second">second section</div>
@@ -55,11 +56,15 @@ h2 {
   const docEl = doc.documentElement;
 
   const scrollLoading = () => {
-    const clientHeight = docEl.clientHeight;
+    // view port height
+    const viewHeight   = docEl.clientHeight;
+    // scrollTop returns the number of pixels that document is scrolled vertically
     const scrollTop    = docEl.scrollTop;
+    // the height of whole document from document top to document bottom, including scroll height
     const scrollHeight = docEl.scrollHeight;
 
-    if (clientHeight + scrollTop >= scrollHeight) {
+    // triggering the following code logic when user scrolls to the bottom of the page
+    if (viewHeight + scrollTop >= scrollHeight) {
       const firstEl = doc.createElement('div');
       firstEl.setAttribute('class', 'first section');
       firstEl.innerHTML = 'first section';
@@ -76,9 +81,17 @@ h2 {
       fourthEl.setAttribute('class', 'fourth section');
       fourthEl.innerHTML = 'fourth section';
 
+      // creates a new empty DocumentFragment into which DOM nodes can be added to build an offscreen DOM tree
       const fragment = doc.createDocumentFragment();
+
+      // fragment is an istance of DocumentElement after creating
+      // note append method comming from ParentNode
+      // ParentNode.insert(): Inserts a set of Node objects or DOMString objects after the last child of the ParentNode
+      // changes made to the fragment don't affect the document or incur any performance impact when changes are made
       fragment.append(firstEl, secondEl, thirdEl, fourthEl);
-      doc.querySelector('.main').append(fragment);
+
+
+      doc.querySelector('.main').appendChild(fragment);
     }
   };
 
