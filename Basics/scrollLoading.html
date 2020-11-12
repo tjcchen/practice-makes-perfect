@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Loading</title>
+<style type="text/css">
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body {
+  background: #f1f1f1;
+  text-align: center;
+  font-size: 100%;
+  font-family: sans-serif;
+}
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px;
+}
+.section {
+  height: 400px;
+  line-height: 400px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.first {
+  background: #f90;
+}
+.second, .third, .fourth, .fifth {
+  border-bottom: 1px solid #ccc;
+}
+h2 {
+  margin: 10px 0 20px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <h2>Scroll Loading Content Effect</h2>
+  <div class="main">
+    <div class="section first">first section</div>
+    <div class="section second">second section</div>
+    <div class="section third">third section</div>
+    <div class="section fourth">fourth section</div>
+    <div class="section fifth">fifth section</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const doc   = win.document;
+  const docEl = doc.documentElement;
+
+  const scrollLoading = () => {
+    const clientHeight = docEl.clientHeight;
+    const scrollTop    = docEl.scrollTop;
+    const scrollHeight = docEl.scrollHeight;
+
+    if (clientHeight + scrollTop >= scrollHeight) {
+      const firstEl = doc.createElement('div');
+      firstEl.setAttribute('class', 'first section');
+      firstEl.innerHTML = 'first section';
+
+      const secondEl = doc.createElement('div');
+      secondEl.setAttribute('class', 'second section');
+      secondEl.innerHTML = 'second section';
+
+      const thirdEl = doc.createElement('div');
+      thirdEl.setAttribute('class', 'third section');
+      thirdEl.innerHTML = 'third section';
+
+      const fourthEl = doc.createElement('div');
+      fourthEl.setAttribute('class', 'fourth section');
+      fourthEl.innerHTML = 'fourth section';
+
+      const fragment = doc.createDocumentFragment();
+      fragment.append(firstEl, secondEl, thirdEl, fourthEl);
+      doc.querySelector('.main').append(fragment);
+    }
+  };
+
+  const throttle = (fn, time) => {
+    let flag = true;
+    return function() {
+      if (!flag) return;
+      flag = false;
+
+      setTimeout(() => {
+        fn.apply(this, arguments);
+        flag = true;
+      }, time);
+    };
+  };
+
+  win.addEventListener('scroll', throttle(scrollLoading, 500));
+})(window);
+</script>
+</body>
+</html>
