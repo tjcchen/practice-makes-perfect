@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>window.requestAnimationFrame</title>
+<style type="text/css">
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f4f4f4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.animation {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<div class="animation"></div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const element = document.querySelector('.animation');
+  let start;
+
+  function step(timestamp) {
+    if (typeof start === 'undefined') {
+      start = timestamp;
+    }
+
+    // timestamp is browser's current timestamp, coming from win.requestAnimationFrame callback function
+    const elapsed = timestamp - start;
+
+    console.log('timestamp: ' + timestamp);
+    console.log('start: ' + start);
+    console.log('elapsed: ' + elapsed);
+
+    // `Math.min()` is used here to make sure that the element stops at exactly 200px.
+    element.style.transform = 'translateX(' + Math.min(0.1 * elapsed, 200) + 'px)';
+
+    if (elapsed < 2000) { // Stop the animation after 2 seconds
+      win.requestAnimationFrame(step);
+    }
+  }
+
+  win.requestAnimationFrame(step);
+})(window);
+</script>
+</body>
+</html>
