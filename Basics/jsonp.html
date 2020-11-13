@@ -8,6 +8,8 @@
 <body>
 <div>
   <h3>Jsonp JavaScript Implementation</h3>
+  <p>JSONP enables sharing of data bypassing same-origin policy</p>
+  <p>Aside from injecting script tag in current page, the server also needs to support jsonp format api call response</p>
 </div>
 
 <script type="text/javascript">
@@ -21,6 +23,7 @@
       let dataSrc = '';
 
       for (let key in params) {
+        // append url parameters when the key in params
         if (Object.prototype.hasOwnProperty.call(params, key)) {
           dataSrc += `${key}=${params[key]}&`;
         }
@@ -32,13 +35,46 @@
 
     return new Promise((resolve, reject) => {
       const scriptEl = doc.createElement('script');
-      scriptEl.src = generateUrl();
+      scriptEl.type = 'text/javascript';
+      scriptEl.src  = generateUrl();
+      // scriptEl.setAttribute('crossorigin', 'anonymous');
+
+      console.log('script: ' + scriptEl.outerHTML);
 
       doc.body.appendChild(scriptEl);
       win[callback] = data => {
         resolve(data);
-        doc.removeChild(scriptEl);
+
+        // scriptEl: script src="http://localhost:3000/jsonp?type=jsonp&callback=callback"
+        doc.body.removeChild(scriptEl);
       };
+    });
+  };
+
+  //////////////////
+  // TEST SECTION
+  //////////////////
+  win.onload = () => {
+    const params = {
+      url: 'http://localhost:3000/jsonp',
+      params: {
+        type: 'jsonp'
+      },
+      callback: 'callback'
+    };
+
+    // server side response is some kind of js code like:
+    // /**/ typeof callback === 'function' && callback({"name":"jsonp","data":[1,2,3,4,5,6]});
+    let promise = jsonp(params);
+
+    promise.then(response => 
+    {
+      console.log('SUCCESS: ');
+      console.log(response);
+    })
+    .catch(error =>
+    {
+      console.log('ERROR: ' + error);
     });
   };
 })(window);
