@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jsonp JavaScript Implementation</title>
+</head>
+<body>
+<div>
+  <h3>Jsonp JavaScript Implementation</h3>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const doc = win.document;
+
+  const jsonp = ({ url, params, callback }) => {
+    const generateUrl = () => {
+      let dataSrc = '';
+
+      for (let key in params) {
+        if (Object.prototype.hasOwnProperty.call(params, key)) {
+          dataSrc += `${key}=${params[key]}&`;
+        }
+      }
+
+      dataSrc += `callback=${callback}`;
+      return `${url}?${dataSrc}`;
+    };
+
+    return new Promise((resolve, reject) => {
+      const scriptEl = doc.createElement('script');
+      scriptEl.src = generateUrl();
+
+      doc.body.appendChild(scriptEl);
+      win[callback] = data => {
+        resolve(data);
+        doc.removeChild(scriptEl);
+      };
+    });
+  };
+})(window);
+</script>
+</body>
+</html>
