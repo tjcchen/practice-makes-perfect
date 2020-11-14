@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert Virtual DOM to Real DOM</title>
+</head>
+<body>
+<div>
+  <h3>Convert Virtual DOM to Real DOM</h3>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  // virtual DOM to real DOM
+  function render(vnode, container) {
+    container.appendChild(_render(vnode));
+  }
+
+  function _render(vnode) {
+    if (typeof vnode === 'number') {
+      vnode = String(vnode);
+    }
+
+    if (typeof vnode === 'string') {
+      return document.createTextNode(vnode);
+    }
+
+    const dom = document.createElement(vnode.tag);
+    if (vnode.attrs) {
+      Object.keys(vnode.attrs).forEach(key => {
+        const value = vnode.attrs[key];
+
+        dom.setAttribute(key, value);
+      });
+    }
+
+    vnode.children.forEach(child => render(child, dom));
+    return dom;
+  }
+})(window);
+</script>
+</body>
+</html>
