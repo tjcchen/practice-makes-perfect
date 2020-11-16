@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Object Is Implementation</title>
+</head>
+<body>
+<div>
+  <h2>Object.is(value1, value2)</h2>
+  <p>The Object.is() method determines whether two values are the same value.</p>
+  <h3>Object.is is used to solve special cases as follows:</h3>
+  <p>+0 === -0;   // true</p>
+  <p>NaN === NaN; // false</p>
+  <p></p>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  if (!Object.is) {
+    Object.defineProperty(Object, 'is', {
+      value: function(x, y) {
+        if (x === y) {
+          // +0 != -0
+          // '||' returns false when all equivalences are false, returns true if one of equivalences is true
+          // 1 / -0 == -Infinity, 1 / 0 == Infinity
+          return x !== 0 || y !== 0 || 1 / x === 1 / y;
+        } else {
+          // NaN == NaN
+          return x !== x && y !== y;
+        }
+      }
+    });
+  }
+
+  console.log(Object.is('foo', 'foo')); // true
+  console.log(Object.is([], []));       // false
+
+  let foo = { a: 1 };
+  let bar = { a: 1 };
+  console.log(Object.is(foo, bar));    // false
+  console.log(foo === bar);            // false
+
+  console.log(Object.is(null, null));  // true
+
+  // special cases
+  console.log(Object.is(0, -0));            // false
+  console.log(Object.is(-0, -0));           // true
+  console.log(Object.is(+0, 0));            // true
+  console.log(Object.is(NaN, 0/0));         // true, 0/0 => NaN
+  console.log(Object.is(NaN, NaN));         // true
+})(window);
+</script>
+</body>
+</html>
