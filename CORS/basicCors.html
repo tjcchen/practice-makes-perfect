@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic CORS Implementation</title>
+</head>
+<body>
+<div>
+  <h3>Basic CORS Implementation</h3>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  const xhr = new XMLHttpRequest();
+  const url = 'http://127.0.0.1:3000/cors';
+
+  const callOtherDomain = () => {
+    if (!xhr) {
+      throw new Error('Error: Unable to initialize XMLHttpRequest');
+    }
+
+    xhr.open('GET', url, true);
+
+    // xhr will set request header origin by default
+    // the following line of code is not allowed
+    // xhr.setRequestHeader('Origin', 'http://192.168.199.155:5000');
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== 4) return;
+
+      if (xhr.status === 200 || xhr.status === 304) {
+        console.log(xhr.responseText);
+      } else {
+        throw new Error(xhr.responseText);
+      }
+    };
+
+    xhr.send();
+  };
+
+  callOtherDomain();
+})();
+</script>
+</body>
+</html>
