@@ -15,14 +15,25 @@
   'use strict';
 
   const xhr = new XMLHttpRequest();
-  const url = 'http://127.0.0.1:3000/cors';
+  const url = 'http://127.0.0.1:3000/cors'; // my own server
+
+  // with params
+  // const url = 'http://182.92.180.143:3000/cors?name=jackie&password=123456';
 
   const callOtherDomain = () => {
     if (!xhr) {
       throw new Error('Error: Unable to initialize XMLHttpRequest');
     }
 
-    xhr.open('GET', url, true);
+    const date = new Date();
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+
+    document.cookie = 'name=jackie; path=/; expires=' + date.toGMTString();
+    document.cookie = 'password=123456; path=/; expires=' + date.toGMTString();
+
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Accept', 'application/json');
 
     // xhr will set request header origin by default
     // the following line of code is not allowed
@@ -41,6 +52,9 @@
         throw new Error(xhr.responseText);
       }
     };
+
+    // allow send cookie's to remote server
+    xhr.withCredentials = true;
 
     xhr.send();
   };
