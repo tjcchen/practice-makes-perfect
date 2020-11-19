@@ -31,6 +31,10 @@
     xhr.onreadystatechange = () => {
       if (xhr.readyState !== 4) return;
 
+      // The HTTP 304 Not Modified client redirection response code indicates that
+      // there is no need to retransmit the requested resources.
+      // It is an implicit redirection to a cached resource.
+      // 304 Not Modified
       if (xhr.status === 200 || xhr.status === 304) {
         console.log(xhr.responseText);
       } else {
