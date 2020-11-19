@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch CORS</title>
+</head>
+<body>
+<div>
+  <h3>Fetch CORS</h3>
+  <button onclick="fetchData()">Fetch</button>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const url  = 'http://127.0.0.1:3000/cors';
+
+  const date = new Date();
+  date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+
+  document.cookie = 'name=jackie; path=/; expires=' + date.toGMTString();
+  document.cookie = 'password=123456; path=/; expires=' + date.toGMTString();
+
+  window.fetchData = () => {
+    fetch(url, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'json/application'
+      },
+      credentials: 'include' // equals to xhr.withCredentials = true
+    })
+    .then(res => res.text())
+    .then(console.log)
+    .catch(err => {
+      console.log(err);
+    });
+  };
+})();
+</script>
+</body>
+</html>
