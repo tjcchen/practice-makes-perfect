@@ -30,13 +30,13 @@
             console.log(value); // undefined
           }, reason => {
             console.log('[second then]: ');
-            console.log(reason);
+            console.log(reason); // undefined
           })
           .then(value => {
             console.log('[third then]: ');
             console.log(value); // undefined
           }, reason => {
             console.log('[third then]: ');
-            console.log(reason);
+            console.log(reason); // undefined
           });
 })();
