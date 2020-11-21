@@ -18,7 +18,7 @@
   const url  = 'http://127.0.0.1:3000/cors';
 
   const date = new Date();
-  date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+  date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000)); // 1d
 
   // SameSite=None; Secure=true;
   document.cookie = 'name=jackie; path=/; expires=' + date.toGMTString();
@@ -29,7 +29,7 @@
       method: 'post',
       mode: 'cors',
       headers: {
-        'Content-Type': 'json/application'
+        'Content-Type': 'json/application' // trigger preflight request
       },
       credentials: 'include' // equals to xhr.withCredentials = true
     })

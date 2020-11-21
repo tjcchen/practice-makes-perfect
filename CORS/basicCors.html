@@ -26,7 +26,7 @@
     }
 
     const date = new Date();
-    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000)); // 1d
 
     // SameSite=None; Secure=true; 
     document.cookie = 'name=jackie; path=/; expires=' + date.toGMTString();
