@@ -7,7 +7,7 @@
 
   // If onRejected is not a function and promise1 is rejected, promise2 must be rejected with the same reason as promise1
   const promise2 = promise1.then(() => {
-    console.log('promise1 fulfilled');
+    console.log('promise1 fulfilled'); // will not be executed
   }, false);
 
   // print out 'promise2 rejected: FAILED'
