@@ -6,6 +6,8 @@
 <h2>Documentation</h2>
 <p>
   MDN: https://developer.mozilla.org/en-US/
+  <br/>
+  Promises A+: https://promisesaplus.com/
 </p>
 
 <h2>Contact</h2>
