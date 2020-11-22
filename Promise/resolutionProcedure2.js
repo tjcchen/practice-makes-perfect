@@ -52,4 +52,33 @@
       console.log('promise4 rejected');
     }
   );
+
+  ///////////////////
+  // Case 3: pending
+  ///////////////////
+  const promise5 = new Promise((resolve, reject) => {
+    resolve();
+  });
+  
+  // If x is a promise, promise6 adopt its state
+  // If x is pending, promise must remain pending until x is fulfilled or rejected
+  const promise6 = promise5.then(
+    () => {
+      // note new Promise(); will cast error, therefore 'promise6 rejected' will be executed
+      return new Promise(() => {});
+    },
+    null
+  );
+    
+  console.log(promise6); // Promise { <pending> }
+  
+  // print out nothing, promise6 in pending state
+  promise6.then(
+    () => {
+      console.log('promise6 fulfilled');
+    },
+    () => {
+      console.log('promise6 rejected');
+    }
+  );
 })();
