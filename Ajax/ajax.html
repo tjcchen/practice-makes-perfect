@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajax Test Module</title>
+</head>
+<body>
+<div>
+  <h3>Ajax</h3>
+  <button>Send Get Request</button>
+</div>
+
+<script type="text/javascript" src="../Assets/js/require.js"></script>
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  requirejs.config({
+    baseUrl: './'
+  });
+
+  requirejs(['ajax'], function(Ajax) {
+
+    const retJson = Ajax.getJson();
+    console.log(retJson);
+
+  });
+})(window);
+</script>
+</body>
+</html>
