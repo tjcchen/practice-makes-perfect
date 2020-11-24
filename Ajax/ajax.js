@@ -24,9 +24,10 @@
   const POST              = 'POST';
   const SUCCESS_CODE      = 200;
   const NOT_MODIFIED_CODE = 304;
-  const READY_STATE_CODE  = 4;
-  const isAsync           = true;
-  const xhr               = null;
+  const STATE_READY_CODE  = 4;
+
+  let isAsync             = true;
+  let xhr                 = null;
 
   const init = () => {
     return XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
@@ -40,7 +41,7 @@
 
     return new Promise((resolve, reject) => {
       xhr.onreadystatechange = function() {
-        if (xhr.readyState !== READY_STATE_CODE) return;
+        if (xhr.readyState !== STATE_READY_CODE) return;
   
         if (xhr.status === SUCCESS_CODE || xhr.status === NOT_MODIFIED_CODE) {
           resolve(xhr.responseText);
