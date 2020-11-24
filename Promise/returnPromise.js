@@ -7,10 +7,13 @@
 
   // console.log(promise1); // Promise { <rejected> undefined }
 
-  const promise2 = promise1.then(null, function() {
-    console.log('123');
-    return 123;
-  });
+  const promise2 = promise1.then(
+    null,
+    function() {
+      console.log('123');
+      return 123;
+    }
+  );
 
   // console.log(promise2); // Promise { <pending> }
 
@@ -21,5 +24,6 @@
     },
     () => {
       console.log('promise2 rejected');
-    });
+    }
+  );
 })();
