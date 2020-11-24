@@ -24,22 +24,6 @@
     const retJson = Ajax.getJson();
     console.log(retJson);
   });
-
-  const promise1 = new Promise((resolve, reject) => {
-    resolve('success');
-  });
-
-  promise1.then(
-    () => {
-      // 'this' refers to 'undefined' in strict mode, and refers to window object in in sloppy mode
-      // currently, we are in strict mode
-      console.log(this);
-      console.log('fulfilled');
-    },
-    () => {
-      console.log('rejected');
-    }
-  );
 })(window);
 </script>
 </body>
