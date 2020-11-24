@@ -29,7 +29,10 @@
   };
 
   const resizeFn = () => {
-    console.log(this);  // undefined, arrow function will not point 'this' to window object
+    // 'this' refers to 'undefined' in strict mode, and refers to window object in in sloppy mode
+    // currently, we are in strict mode
+    console.log(this); // undefined
+
     console.log('window resize');
   };
 
