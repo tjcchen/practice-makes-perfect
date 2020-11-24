@@ -1,7 +1,7 @@
 ;(function() {
   'use strict';
 
-  const promise1 = new Promise(resolve => setTimeout(resolve, 3000));
+  const promise1 = new Promise(resolve => setTimeout(resolve, 1000));
 
   const promise2 = Promise.resolve(200);
   const promise3 = Promise.reject(100);
