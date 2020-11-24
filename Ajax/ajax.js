@@ -20,16 +20,29 @@
 })(this, function() {
   'use strict';
 
-  const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+  const GET               = 'GET';
+  const POST              = 'POST';
+  const SUCCESS_CODE      = 200;
+  const NOT_MODIFIED_CODE = 304;
+  const READY_STATE_CODE  = 4;
+  const isAsync           = true;
+  const xhr               = null;
+
+  const init = () => {
+    return XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+  };
+
+  // initialize xhr object
+  xhr = init();
 
   const get = (options = {}) => {
-    xhr.open('GET', options.url, true);
+    xhr.open(GET, options.url, isAsync);
 
     return new Promise((resolve, reject) => {
       xhr.onreadystatechange = function() {
-        if (xhr.readyState !== 4) return;
+        if (xhr.readyState !== READY_STATE_CODE) return;
   
-        if (xhr.status === 200 || xhr.status === 304) {
+        if (xhr.status === SUCCESS_CODE || xhr.status === NOT_MODIFIED_CODE) {
           resolve(xhr.responseText);
         } else {
           reject(new Error(xhr.responseText));
@@ -49,8 +62,8 @@
   };
 
   return {
-    getJson,
     get,
-    post
+    post,
+    getJson
   };
 });
