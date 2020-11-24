@@ -10,11 +10,16 @@
   const promise2 = promise1.then(
     null,
     () => {
-      // ... some code logic
+      return {
+        get then() {
+          // some code logic
+          // ...
 
-      throw new Error('Inner Error');
+          throw new Error('Inner Error');
 
-      // ...
+          // ...
+        }
+      }
     }
   );
   

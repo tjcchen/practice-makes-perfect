@@ -16,6 +16,7 @@
   } else { // default - mount ajax to window
     root.ajax = factory();
   }
+
 })(this, function() {
   'use strict';
 
