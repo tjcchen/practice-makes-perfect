@@ -20,11 +20,37 @@
 })(this, function() {
   'use strict';
 
+  const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+
+  const get = (options = {}) => {
+    xhr.open('GET', options.url, true);
+
+    return new Promise((resolve, reject) => {
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== 4) return;
+  
+        if (xhr.status === 200 || xhr.status === 304) {
+          resolve(xhr.responseText);
+        } else {
+          reject(new Error(xhr.responseText));
+        }
+      };
+  
+      xhr.send();
+    });
+  };
+
   const getJson = () => {
     return 'retrieve json data from server';
   };
 
+  const post = (options) => {
+    return 'retrieve data with post method';
+  };
+
   return {
-    getJson
+    getJson,
+    get,
+    post
   };
 });

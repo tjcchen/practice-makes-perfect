@@ -21,8 +21,20 @@
   });
 
   requirejs(['ajax'], function(Ajax) {
-    const retJson = Ajax.getJson();
-    console.log(retJson);
+    const colorUrl    = 'http://www.colr.org/json/color/random';
+    const ajaxPromise = Ajax.get({
+      url: colorUrl
+    });
+
+    ajaxPromise.then(
+      (data) => {
+        const response = JSON.parse(data);
+        console.log(response.new_color);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   });
 })(window);
 </script>
