@@ -1,6 +1,6 @@
 function throttle(fn, threshold = 250) {
-  let last  = null;
-  let timer = null;
+  let last  = 0;
+  let timer = 0;
 
   return function() {
     const context = this;

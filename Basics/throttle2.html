@@ -15,8 +15,8 @@
 <script type="text/javascript">
 (function(win, undefined) {
   const throttle = (fn, threshold = 250) => {
-    let last    = null;
-    let timerId = null;
+    let last    = 0;
+    let timerId = 0;
 
     return function() {
       const context = this;
