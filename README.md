@@ -8,6 +8,8 @@
   MDN: https://developer.mozilla.org/en-US/
   <br/>
   Promises A+: https://promisesaplus.com/
+  <br/>
+  XHR Specification: https://xhr.spec.whatwg.org/
 </p>
 
 <h2>Contact</h2>
