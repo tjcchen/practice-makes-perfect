@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Throttle2 JavaScript Implementation</title>
+</head>
+<body>
+<div>
+  <h3>Throttle JavaScript Implementation</h3>
+</div>
+<div style="height:3000px"></div>
+<div>Text</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  const throttle = (fn, threshold = 250) => {
+    let last    = null;
+    let timerId = null;
+
+    return function() {
+      const context = this;
+      const args    = arguments;
+
+      let now       = +new Date();
+
+      if (last && now < last + threshold) {
+        clearTimeout(timerId);
+
+        timerId = setTimeout(() => {
+          last = now;
+          fn.apply(context, args);
+        }, threshold);
+      } else {
+        last = now;
+        fn.apply(context, args);
+      }
+    };
+  };
+
+  const onScroll = () => {
+    console.log('onscroll triggered');
+  }
+
+  win.onscroll = throttle(onScroll, 1000);
+})(window);
+</script>
+</body>
+</html>
