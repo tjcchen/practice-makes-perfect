@@ -8,32 +8,36 @@
 <body>
 <div>
   <h3>Throttle JavaScript Implementation</h3>
+  <button id="btn">Click ME!</button>
 </div>
 <div style="height:3000px"></div>
 <div>Text</div>
 
 <script type="text/javascript">
 (function(win, undefined) {
+
+  const doc = win.document;
+
   const throttle = (fn, threshold = 250) => {
     let last    = 0;
     let timerId = 0;
 
     return function() {
-      const context = this;
-      const args    = arguments;
+      const that = this;
+      const args = arguments;
 
-      let now       = +new Date();
+      let now    = +new Date();
 
       if (last && now < last + threshold) {
         clearTimeout(timerId);
 
         timerId = setTimeout(() => {
           last = now;
-          fn.apply(context, args);
+          fn.apply(that, args);
         }, threshold);
       } else {
         last = now;
-        fn.apply(context, args);
+        fn.apply(that, args);
       }
     };
   };
@@ -43,6 +47,9 @@
   }
 
   win.onscroll = throttle(onScroll, 1000);
+
+  const oBtn = doc.querySelector('#btn');
+  oBtn.addEventListener('click', throttle(() => { console.log('You Clicked Me!'); }, 3000), false);
 })(window);
 </script>
 </body>
