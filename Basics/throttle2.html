@@ -3,54 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Throttle2 JavaScript Implementation</title>
+<title>Throttle JavaScript Implemention</title>
 </head>
 <body>
 <div>
-  <h3>Throttle JavaScript Implementation</h3>
-  <button id="btn">Click ME!</button>
+  <h3>Throttle JavaScript Implemention</h3>
+  <button>Click Me!</button>
 </div>
-<div style="height:3000px"></div>
-<div>Text</div>
 
 <script type="text/javascript">
-(function(win, undefined) {
+(function() {
+  const throttle = (fn, delay) => {
+    let last = 0;
 
-  const doc = win.document;
+    return (...args) => {
+      const now = new Date().getTime();
 
-  const throttle = (fn, threshold = 250) => {
-    let last    = 0;
-    let timerId = 0;
-
-    return function() {
-      const that = this;
-      const args = arguments;
-
-      let now    = +new Date();
-
-      if (last && now < last + threshold) {
-        clearTimeout(timerId);
-
-        timerId = setTimeout(() => {
-          last = now;
-          fn.apply(that, args);
-        }, threshold);
-      } else {
-        last = now;
-        fn.apply(that, args);
+      if (now - last < delay) {
+        return;
       }
-    };
+
+      last = now;
+      return fn(...args);
+    }
   };
 
-  const onScroll = () => {
-    console.log('onscroll triggered');
-  }
-
-  win.onscroll = throttle(onScroll, 1000);
-
-  const oBtn = doc.querySelector('#btn');
-  oBtn.addEventListener('click', throttle(() => { console.log('You Clicked Me!'); }, 3000), false);
-})(window);
+  const oBtn = document.querySelector('button');
+  
+  oBtn.addEventListener('click', throttle(e => {
+    console.log(e);
+    console.log('You Clicked Me!');
+  }, 3000), false);
+})();
 </script>
 </body>
 </html>
