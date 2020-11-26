@@ -10,11 +10,14 @@
   <h3>Debounce Use Cases</h3>
   <p>1. window.resize</p>
   <p>2. apply debounce to search inputbox to reduce ajax requests to server</p>
+  <button id="btn">Click Me!</button>
 </div>
 
 <script type="text/javascript">
 (function(win, undefined) {
   'use strict';
+
+  const doc = win.document;
 
   const debounce = (fn, time) => {
     let timeout = null;
@@ -32,11 +35,16 @@
     // 'this' refers to 'undefined' in strict mode, and refers to window object in in sloppy mode
     // currently, we are in strict mode
     console.log(this); // undefined
-
     console.log('window resize');
   };
 
   win.onresize = debounce(resizeFn, 300);
+
+  const oBtn = doc.querySelector('#btn');
+  oBtn.addEventListener('click', debounce((e) => {
+    console.log(e);
+    console.log('clicked');
+  }, 2000), false);
 })(window);
 </script>
 </body>
