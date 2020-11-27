@@ -8,7 +8,8 @@
 <body>
 <div>
   <h3>Ajax</h3>
-  <button>Send Get Request</button>
+  <button id="getBtn">Send GET Request</button>
+  <button id="postBtn">Send POST Request</button>
 </div>
 
 <script type="text/javascript" src="../Assets/js/require.js"></script>
@@ -16,25 +17,56 @@
 (function(win, undefined) {
   'use strict';
 
+  const doc = win.document;
+  
   requirejs.config({
     baseUrl: './'
   });
 
   requirejs(['ajax'], function(Ajax) {
-    const colorUrl    = 'http://www.colr.org/json/color/random';
-    const ajaxPromise = Ajax.get({
-      url: colorUrl
-    });
+    const colorUrl = 'http://www.colr.org/json/color/random';
+    const postUrl  = 'http://www.tjcchen.cn/post';
+    const getBtn   = doc.querySelector('#getBtn');
+    const postBtn  = doc.querySelector('#postBtn');
 
-    ajaxPromise.then(
-      (data) => {
-        const response = JSON.parse(data);
-        console.log(response.new_color);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    //--------------------
+    // GET Request
+    //--------------------
+    getBtn.addEventListener('click', () => {
+      const ajaxPromise = Ajax.get({
+        url: colorUrl
+      });
+
+      ajaxPromise.then(
+        (data) => {
+          const response = JSON.parse(data);
+          console.log(response);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }, false);
+
+    //-----------------
+    // POST Request
+    //-----------------
+    postBtn.addEventListener('click', () => {
+      const postPromise = Ajax.post({
+        url: postUrl,
+        data: 'name=andy&occupation=engineer'
+      });
+
+      postPromise.then(
+        (data) => {
+          const response = JSON.parse(data);
+          console.log(response);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }, false);
   });
 })(window);
 </script>

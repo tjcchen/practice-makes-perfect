@@ -20,11 +20,13 @@
 })(this, function() {
   'use strict';
 
-  const GET               = 'GET';
-  const POST              = 'POST';
-  const SUCCESS_CODE      = 200;
-  const NOT_MODIFIED_CODE = 304;
-  const STATE_READY_CODE  = 4;
+  const GET                = 'GET';
+  const POST               = 'POST';
+  const CONTENT_TYPE       = 'Content-Type';
+  const URL_ENCODED_STRING = 'application/x-www-form-urlencoded';
+  const DONE               = 200;
+  const NOT_MODIFIED       = 304;
+  const READY              = 4;
 
   let isAsync             = true;
   let xhr                 = null;
@@ -41,9 +43,11 @@
 
     return new Promise((resolve, reject) => {
       xhr.onreadystatechange = function() {
-        if (xhr.readyState !== STATE_READY_CODE) return;
-  
-        if (xhr.status === SUCCESS_CODE || xhr.status === NOT_MODIFIED_CODE) {
+        if (xhr.readyState !== READY) {
+          return;
+        }
+
+        if (xhr.status === DONE || xhr.status === NOT_MODIFIED) {
           resolve(xhr.responseText);
         } else {
           reject(new Error(xhr.responseText));
@@ -54,17 +58,29 @@
     });
   };
 
-  const getJson = () => {
-    return 'retrieve json data from server';
-  };
+  const post = (options = {}) => {
+    xhr.open(POST, options.url, isAsync);
+    xhr.setRequestHeader(CONTENT_TYPE, URL_ENCODED_STRING);
 
-  const post = (options) => {
-    return 'retrieve data with post method';
+    return new Promise((resolve, reject) => {
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== READY) {
+          return;
+        }
+
+        if (xhr.status === DONE) {
+          resolve(xhr.responseText);
+        } else {
+          reject(new Error(xhr.responseText));
+        }
+      };
+
+      xhr.send(options.data);
+    });
   };
 
   return {
     get,
-    post,
-    getJson
+    post
   };
 });
