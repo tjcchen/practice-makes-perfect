@@ -19,11 +19,11 @@
 
   const doc = win.document;
   
-  requirejs.config({
+  require.config({
     baseUrl: './'
   });
 
-  requirejs(['ajax'], function(Ajax) {
+  require(['ajax'], function(Ajax) {
     const colorUrl = 'http://www.colr.org/json/color/random';
     const postUrl  = 'http://www.tjcchen.cn/post';
     const getBtn   = doc.querySelector('#getBtn');
