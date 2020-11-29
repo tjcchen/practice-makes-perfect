@@ -1,6 +1,6 @@
 <h2>Interviews</h2>
 <p>
-  Personal private project for front-end interview preparations.
+  Personal project for front-end interview preparations.
 </p>
 
 <h2>Documentation</h2>
@@ -19,5 +19,5 @@
 
 <h2>License</h2>
 <p>
-  This project is licensed under the terms of the MIT license
+  This project is licensed under the terms of the MIT license.
 </p>
