@@ -1,5 +1,5 @@
 /**
- * A basic definition of UMD(Universal Module Definition)
+ * A basic module definition of UMD(Universal Module Definition)
  * 
  * @author Andy Chen
  * @location Shenzhen Book Store, Futian District, Shenzhen City
