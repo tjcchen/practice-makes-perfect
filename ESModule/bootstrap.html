@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap HTML file for ES Module</title>
+</head>
+<body>
+<div>
+  <h4>Run ES Module Code in Browsers</h4>
+</div>
+
+<!-- Enable import & export in browsers with type="module" -->
+<script type="module">
+import './index.js';
+import { sayHi } from './sayHi.js';
+
+document.body.innerHTML += sayHi('John');
+</script>
+</body>
+</html>
