@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Array Reduce Implementation</title>
+</head>
+<body>
+<div>
+  <h3>JavaScript Array Reduce Implementation</h3>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  Array.prototype.reduce = function(callback, initialValue) {
+    if (typeof this === 'undefined' || this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+
+    if (typeof callback !== 'function') {
+      throw new TypeError(`${callback} is not a function`);
+    }
+
+    const Obj = Object(this);
+    const len = this.length >>> 0;
+
+    let accumulator = initialValue;
+    let k = 0;
+
+    if (typeof accumulator === 'undefined') {
+      while (k < len && !(k in Obj)) {
+        k++;
+      }
+
+      if (k >= len) {
+        throw new TypeError('Reduce of empty array with no initial value');
+      }
+      accumulator = Obj[k++];
+    }
+
+    while (k < len) {
+      if (k in Obj) {
+        accumulator = callback.call(null, accumulator, Obj[k], k, Obj);
+      }
+      k++;
+    }
+    
+    return accumulator;
+  };
+
+  const result = [1, 2, 3, 4].reduce((accum, curr) => {
+    return accum + curr;
+  }, 0);
+
+  console.log(result);
+})();
+</script>
+</body>
+</html>
