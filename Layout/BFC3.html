@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BFC(Block Formatting Context) Use Case</title>
+<style type="text/css">
+.outer {
+  border: 1px solid #000;
+  display: flow-root;
+  /* or with overflow: hidden; */
+  /* overflow: hidden; */
+}
+.inner {
+  width: 100px;
+  height: 100px;
+  background: #ccc;
+  float: left;
+}
+</style>
+</head>
+<body>
+<div>
+  <h3>BFC(Block Formatting Context) - Contain Internal Floats</h3>
+  <p>CSS float property will make element position out of its original html text flow. BFC can fix this problem.</p>
+  <div class="outer">
+    <div class="inner">Inner Text</div>
+  </div>
+</div>
+</body>
+</html>
