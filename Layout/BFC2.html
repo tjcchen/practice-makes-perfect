@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BFC(Block Formatting Context) Use Case</title>
+<style type="text/css">
+.blue, .red-inner {
+  height: 50px;
+  margin: 10px 0;
+}
+.blue {
+  background: blue;
+}
+.red-inner {
+  background: red;
+}
+.red-outer {
+  /* solution1: Create BFC container with display: flow-root; */
+  display: flow-root;
+  /* solution2: or with overflow: hidden; */
+  /* overflow: hidden; */
+}
+</style>
+</head>
+<body>
+<div>
+  <h3>BFC(Block Formatting Context) - Margin collapsing</h3>
+  <p>Creating a new BFC to avoid the margin collapsing between two neighbor div:</p>
+  <section>
+    <div class="blue"></div>
+    <div class="red-outer">
+      <div class="red-inner">red inner</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
