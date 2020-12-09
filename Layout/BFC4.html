@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BFC(Block Formatting Context) Use Case</title>
+<style type="text/css">
+.div1 {
+  width: 100px;
+  height: 100px;
+  background: lightblue;
+  float: left;
+}
+.div2 {
+  width: 200px;
+  height: 200px;
+  background: #ccc;
+  /* Enable BFC to prevent external floats */
+  overflow: hidden;
+  /* or with display: flow-root; */
+  /* display: flow-root; */
+}
+</style>
+</head>
+<body>
+<div>
+  <h3>BFC(Block Formatting Context) - Prevent External Floats</h3>
+  <section>
+    <div class="div1">An Element with Float Left Property Set</div>
+    <div class="div2">An Element without Float Property Set. To Avoid Content Blocking, We need BFC.</div>
+    <div>Subsequent Content</div>
+  </section>
+</div>
+</body>
+</html>
