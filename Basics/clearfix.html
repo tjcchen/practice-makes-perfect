@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Several Ways of Clearing Fix</title>
+<style type="text/css">
+.container1, .container2, .container3 {
+  height: 200px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.is-float {
+  float: left;
+}
+.red, .yellow, .blue {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.blue {
+  background-color: blue;
+}
+
+/* solution2: use after pseudo class */
+.container2:after {
+  content: " "; /* Older browser do not support empty content */
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+/* solution3: if we don't require IE<8 support, the following is fine too: */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* solution4: recommended */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/* solution5: flow-root */
+.clearfix-new {
+  display: flow-root; /* IE does not support */
+}
+</style>
+</head>
+<body>
+  <h3>Several Ways of Clearing Fix</h3>
+  <section class="container1">
+    <div class="is-float red"></div>
+    <div class="is-float yellow"></div>
+    <div class="is-float blue"></div>
+  </section>
+  <!-- solution1: add an extra tag to clearfix -->
+  <div style="clear:both;"></div>
+
+  <section class="container2">
+    <div class="is-float red"></div>
+    <div class="is-float yellow"></div>
+    <div class="is-float blue"></div>
+  </section>
+
+  <section class="container3 clearfix">
+    <div class="is-float red"></div>
+    <div class="is-float yellow"></div>
+    <div class="is-float blue"></div>
+  </section>
+</body>
+</html>
