@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Truncate String with Ellipsis Use Case</title>
+<style type="text/css">
+.flex-parent {
+  display: flex;
+  align-items: center; /* vertically centering */
+  /* justify-content: center; */ /* horizontally centering */
+  padding: 10px;
+  margin: 30px 0;
+}
+h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.long-and-truncated {
+  flex: 1;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.short-and-fixed {
+  white-space: nowrap;
+}
+.short-and-fixed div {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: lightgreen;
+  display: inline-block;
+}
+.long-and-truncated-with-child {
+  flex: 1;
+}
+.long-and-truncated-with-child h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.long-and-truncated-with-child-corrected {
+  flex: 1;
+  min-width: 0; /* or some other value, this is necessary */
+}
+.long-and-truncated-with-child-corrected h3{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+  <div class="flex-parent has-child">
+    <div class="flex-child long-and-truncated">
+      1. I am going to pass the interview in Baidu and Alibaba!
+    </div>
+    <div class="flex-child short-and-fixed">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="flex-parent has-child">
+    <div class="flex-child long-and-truncated-with-child">
+      <h3>2. I am going to pass the interview in Baidu and Alibaba!</h3>
+    </div>
+    <div class="flex-child short-and-fixed">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="flex-parent has-child">
+    <div class="flex-child long-and-truncated-with-child-corrected">
+      <h3>3. I am going to pass the interview in Baidu and Alibaba!</h3>
+    </div>
+    <div class="flex-child short-and-fixed">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</body>
+</html>
