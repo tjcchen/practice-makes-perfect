@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truncate Multiple Lines of String</title>
+<style type="text/css">
+.module {
+  width: 250px;
+}
+.line-clamp {
+  overflow: hidden;
+  /* make text fill its container */
+  /* text-align: justify; */
+
+  /* IMPORTANT */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* line numbers */
+  -webkit-box-orient: vertical;
+}
+</style>
+</head>
+<body>
+  <h3>Truncate Multiple Lines of String</h3>
+  <div class="module">
+    <p class="line-clamp">I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba!</p>
+  </div>
+</body>
+</html>
