@@ -8,6 +8,14 @@
 .module {
   width: 250px;
 }
+p {
+  line-height: 1.2em;
+  padding: 0;
+  margin: 0;
+}
+
+/* SOLUTION 1: */
+/* note: add paddings would break style of this solutioin */
 .line-clamp {
   overflow: hidden;
   /* make text fill its container */
@@ -15,15 +23,72 @@
 
   /* IMPORTANT */
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* line numbers */
+  -webkit-line-clamp: 4; /* number of lines */
   -webkit-box-orient: vertical;
 }
+
+/* SOLUTION 2: */
+.fade {
+  overflow: hidden;
+
+  position: relative;
+  height: 4.8em; /* exactly four lines */
+}
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 50%)
+}
+
+/* SOLUTION 3: */
+.truncate-overflow {
+  position: relative;
+  max-height: 4.8em; /* the height of four lines */
+  overflow: hidden;
+  padding-right: 1em; /* space for ellipsis */
+}
+.truncate-overflow::after {
+  content: "...";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+/*
+.truncate-overflow::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  background: #fff;
+}
+*/
 </style>
 </head>
 <body>
-  <h3>Truncate Multiple Lines of String</h3>
+  <h2>Truncate Multiple Lines of String</h2>
+  <h3>solution1: line clamp way</h3>
   <div class="module">
     <p class="line-clamp">I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba!</p>
+  </div>
+
+  <h3>solution2: fade out way</h3>
+  <div class="module">
+    <div class="fade">
+      <p>I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba!</p>
+    </div>
+  </div>
+
+  <h3>solution3: the hide overflow & place ellipsis pure CSS way</h3>
+  <div class="module">
+    <div class="truncate-overflow">
+      <p>I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba! I am going to succeed in interviews of Baidu and Alibaba!</p>
+    </div>
   </div>
 </body>
 </html>
