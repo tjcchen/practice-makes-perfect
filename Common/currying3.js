@@ -18,6 +18,5 @@ function add(...args) {
   return helper;
 }
 
-const sum = add(1)(2, 3)(4, 5, 6)(7)(8)(9, 10);
-console.log(sum + 5); // 60
-console.log(sum.toString()); // 55
+const sum = +add(1)(2, 3)(4, 5, 6)(7)(8)(9, 10);
+console.log(sum); // 55
