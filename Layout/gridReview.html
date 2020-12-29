@@ -19,11 +19,39 @@
   /* grid-template-columns: 200px 100px; */
   /* grid-template-columns: 200px 1fr; */
   /* grid-template-columns: 2fr 1fr; */
-  grid-template-columns: repeat(4, 100px);
+  /* grid-template-columns: repeat(4, 100px); */
   /* grid-template-rows: 200px 100px; */
   /* grid-template-rows: repeat(2, minmax(150px, auto)); */
-  grid-auto-rows: 150px; /* default row height */
-  grid-template-rows: 200px; /* only specify the first row */
+  /* grid-auto-rows: 150px; default row height */
+  /* grid-template-rows: 200px; only specify the first row */
+
+  grid-template-columns: 200px 250px;
+  grid-auto-rows: minmax(150px, auto);
+
+  /* grid-gap( deprecated ) */
+  /* grid-column-gap: 10px; */
+  /* grid-row-gap: 20px; */
+
+  /* new gap syntax: */
+  /* gap: <'row-gap'> <'column-gap'>; */
+  /* gap: 20px; */
+  gap: 10px 20px;
+
+  /* grid template area */
+  grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "sidebar content"
+  ;
+}
+.container .item1 {
+  grid-area: header;
+}
+.container .item2 {
+  grid-area: sidebar;
+}
+.container .item3 {
+  grid-area: content;
 }
 </style>
 </head>
