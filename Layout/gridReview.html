@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Grid Layout</title>
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container .item {
+  border: 1px solid #ccc;
+  background: yellow;
+}
+.container {
+  display: grid;
+  /* grid-template-columns: 200px 100px; */
+  /* grid-template-columns: 200px 1fr; */
+  /* grid-template-columns: 2fr 1fr; */
+  grid-template-columns: repeat(4, 100px);
+  /* grid-template-rows: 200px 100px; */
+  /* grid-template-rows: repeat(2, minmax(150px, auto)); */
+  grid-auto-rows: 150px; /* default row height */
+  grid-template-rows: 200px; /* only specify the first row */
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="item item1">Item1</div>
+    <div class="item item2">Item2</div>
+    <div class="item item3">Item3</div>
+    <div class="item item4">Item4</div>
+    <div class="item item5">Item5</div>
+  </div>
+</body>
+</html>
