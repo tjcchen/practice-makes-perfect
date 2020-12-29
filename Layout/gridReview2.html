@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Grid Layout</title>
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container .item {
+  border: 1px solid #ccc;
+  background: yellow;
+}
+.container {
+  display: grid;
+  grid-template-columns: 200px 250px;
+  grid-auto-rows: minmax(150px, auto);
+  gap: 20px;
+
+  /* 1. set grid container position, justify-content has three values: start, center, end; */
+  justify-content: end;
+
+  /* vertically centering */
+  align-content: center;
+  height: 100vh;
+
+  /* 2. set grid items position */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* place-items: center; */
+
+  /* stretch value of align-items & justify-items */
+  align-items: stretch;
+  justify-items: stretch;
+}
+.container .item1 {
+  align-self: start;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="item item1">Item1</div>
+    <div class="item item2">Item2</div>
+    <div class="item item3">Item3</div>
+    <div class="item item4">Item4</div>
+    <div class="item item5">Item5</div>
+  </div>
+</body>
+</html>
