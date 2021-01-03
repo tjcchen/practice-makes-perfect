@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparison between for-in and for-of</title>
+</head>
+<body>
+<div>
+  <h3>Comparison between for-in and for-of</h3>
+  <h4>Conclusion: </h4>
+  <p>1. Iterate over object with for-in, in this case, variable i is property name</p>
+  <p>2. Iterate over array with for-of, in this case, variable i is array value</p>
+  <p>3. for-in prints out keys, while for-of prints out values</p>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  // IIFE
+
+  'use strict';
+
+  const arr = [6, 5, 4, 3, 2, 1];
+  const obj = {
+    location: 'Beijing',
+    occupation: 'Software Engineer',
+    company: 'Baidu Inc.'
+  };
+
+  // [NOTE:] for-in is suitable for iterate over object, we can obtained property name against the object
+  for (let key in obj) {
+    // location, occupation, company
+    console.log(key);
+
+    // location: Beijing, occupation: Software Engineer, company: Baidu Inc.
+    console.log(`${key}: ${obj[key]}`);
+  }
+
+  // The following code casts error - Uncaught TypeError: obj is not iterable
+  // for (let i of obj) {
+  //   console.log(i);
+  // }
+  // Temporarily commented out
+  // for (let [key, value] of obj) {
+  //   console.log(`${key}: ${value}`);
+  // }
+  
+  console.log('\r\n');
+
+  // [NOTE:] for-in would return index if we apply it to array
+  for (let idx in arr) {
+    console.log(idx); // index of the array: 0, 1, 2, 3, 4, 5
+  }
+
+  console.log('\r\n');
+
+  // CORRECT WAY TO ITERATE OVER ARRAY
+  for (let i of arr) {
+    console.log(i);
+  }
+
+  //------------------
+  // Additional Info
+  //------------------
+
+  console.log('\r\n');
+
+  // Object.keys
+  Object.keys(obj).forEach(prop => {
+    console.log(prop); // location, occupation, company
+
+    // location: Beijing, occupation: Software Engineer, company: Baidu Inc.
+    console.log(`${prop}: ${obj[prop]}`);
+  });
+})(window);
+</script>
+</body>
+</html>
