@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Difference between call and apply</title>
+</head>
+<body>
+<div>
+  <h2>Difference between call and apply</h2>
+  <h2>Conclusion</h2>
+  <p>[IMPORTANT] - The difference is that apply lets you invoke the function with arguments as an array; call requires the parameters be listed explicitly.</p>
+  <p>For easy to memorize: A for array and C for comma.</p>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  const fn = (arg1, arg2, ...restArgs) => {
+    console.log(arg1, arg2, restArgs);
+  };
+
+  // apply
+  fn.apply(null, [1, 2, 5, 4, 3]); // 1 2 [5, 4, 3]
+
+  // call
+  fn.call(undefined, 1, 2, 5, 4, 3); // 1 2 [5, 4, 3]
+
+  // ES6 spread synxtax
+  fn.call(undefined, ...[1, 2, 5, 4, 3]); // 1 2 [5, 4, 3]
+
+  //-------------------
+  // Additional INFO
+  //-------------------
+  const func1 = (str) => {
+    console.log(str);
+  };
+
+  const func2 = (str) => {
+    console.log(str);
+  };
+
+  const func3 = (arg1, fn1, fn2) => {
+    console.log(arg1);
+    fn1.apply(null, ['func1']);
+    fn2.call(null, 'func2');
+  };
+
+  func3('hello', func1, func2); // hello, func1, func2
+})();
+</script>
+</body>
+</html>
