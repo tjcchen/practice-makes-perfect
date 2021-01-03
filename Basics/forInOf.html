@@ -12,6 +12,7 @@
   <p>1. Iterate over object with for-in, in this case, variable i is property name</p>
   <p>2. Iterate over array with for-of, in this case, variable i is array value</p>
   <p>3. for-in prints out keys, while for-of prints out values</p>
+  <p>4. Use for-of to iterate over Map, in this case, we got entry of the map</p>
 </div>
 
 <script type="text/javascript">
@@ -39,10 +40,6 @@
   // The following code casts error - Uncaught TypeError: obj is not iterable
   // for (let i of obj) {
   //   console.log(i);
-  // }
-  // Temporarily commented out
-  // for (let [key, value] of obj) {
-  //   console.log(`${key}: ${value}`);
   // }
   
   console.log('\r\n');
@@ -72,6 +69,36 @@
     // location: Beijing, occupation: Software Engineer, company: Baidu Inc.
     console.log(`${prop}: ${obj[prop]}`);
   });
+
+  console.log('\r\n');
+
+  // Iterate over map with for-of
+  const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+  for (const entry of iterable) {
+    console.log(entry); // ['a', 1], ['b', 2], ['c', 3]
+  }
+
+  for (const [key, val] of iterable) {
+    console.log(`${key}: ${val}`); // a: 1, b: 2, c: 3
+  }
+
+  console.log('\r\n');
+
+  // Iterate over arguments with for-of
+  // arguments coming from IIFE
+  for (const argument of arguments) {
+    console.log(argument); // in this case, we got window object
+  }
+
+  console.log('\r\n');
+
+  // Iterate over a DOM collection with for-of
+  const paragraphs = document.querySelectorAll('p');
+
+  for (const paragraph of paragraphs) {
+    paragraph.classList.add('marked');
+  }
 })(window);
 </script>
 </body>
