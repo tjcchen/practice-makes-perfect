@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Meta ViewPort</title>
+</head>
+<body>
+<div>
+  <h3>Dynamic Meta ViewPort</h3>
+</div>
+
+<script type="text/javascript">
+(function(win, undefined) {
+  'use strict';
+
+  const doc = win.document;
+  const width = doc.body.clientWidth || win.innerWidth;
+  const scale = width / 750;
+  const content = `width=750, initial-scale=${scale}, minimum-scale=${scale}, maximum-scale=${scale}, viewport-fit=cover`;
+  
+  doc.querySelector('meta[name="viewport"]').content = content;
+})(window);
+</script>
+</body>
+</html>
