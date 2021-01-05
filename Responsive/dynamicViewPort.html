@@ -4,10 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dynamic Meta ViewPort</title>
+<style type="text/css">
+.container {
+  width: 200px;
+  height: 200px;
+  background: #f00;
+  float: left;
+}
+</style>
 </head>
 <body>
 <div>
   <h3>Dynamic Meta ViewPort</h3>
+  <div class="container">Container</div>
 </div>
 
 <script type="text/javascript">
@@ -18,8 +27,21 @@
   const width = doc.body.clientWidth || win.innerWidth;
   const scale = width / 750;
   const content = `width=750, initial-scale=${scale}, minimum-scale=${scale}, maximum-scale=${scale}, viewport-fit=cover`;
-  
-  doc.querySelector('meta[name="viewport"]').content = content;
+  const viewportMeta = doc.querySelector('meta[name="viewport"]');
+
+  // solution1:
+  // viewportMeta.content = content;
+
+  // solution2: use different scales on different devices
+  if (navigator.userAgent.match(/iPad/i)) {
+    console.log('this is iPad');
+    viewportMeta.content = 'width=device-width, initial-scale=0.75, maximum-scale=0.75, minimum-scale=0.75, viewport-fit=cover';
+  }
+
+  if (navigator.userAgent.match(/iPhone/i)) {
+    console.log('this is iPhone');
+    viewportMeta.content = 'width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, viewport-fit=cover';
+  }
 })(window);
 </script>
 </body>
