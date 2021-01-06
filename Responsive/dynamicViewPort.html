@@ -29,7 +29,7 @@
   const content = `width=750, initial-scale=${scale}, minimum-scale=${scale}, maximum-scale=${scale}, viewport-fit=cover`;
   const viewportMeta = doc.querySelector('meta[name="viewport"]');
 
-  // solution1: set scales bases on dpr(device pixel ratio) / viewport width
+  // solution1: set scales based on dips(device independent pixels) / viewport width
   // viewportMeta.content = content;
 
   // solution2: use different scales on different devices
