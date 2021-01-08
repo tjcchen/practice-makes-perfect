@@ -9,6 +9,8 @@
 <div>
   <h2>Object Create Use Cases</h2>
   <p>The Object.create() method creates a new object, using an existing object as the prototype of the newly created object.</p>
+  <h3>Use Cases</h3>
+  <p>1. Classical JavaScript Inheritance</p>
 </div>
 
 <script type="text/javascript">
@@ -33,6 +35,60 @@
   // others
   Object.create({});   // {}
   Object.create(null); // {}
+
+  //---------------------------------------------
+  // Classical inheritance with Object.create()
+  //---------------------------------------------
+  function Shape() {
+    this.x = 0;
+    this.y = 0;
+  }
+
+  Shape.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+    console.info(`Shaped moved: ${this.x}, ${this.y}`);
+  };
+
+  function Rectangle() {
+    // call super constructor, therefore we can inherit properties from Shape.
+    // that is to say, we can use this.x, but still cannot use move()
+    Shape.call(this); 
+  }
+
+  // subclass extends superclass, at this time, we can use move()
+  Rectangle.prototype = Object.create(Shape.prototype);
+  // If you don't set Rectangle.prototype.constructor to Rectangle,
+  // it will take the prototype.constructor of Shape (parent).
+  // To avoid that, we set the prototype.constructor to Rectangle (child).
+  Rectangle.prototype.constructor = Rectangle;
+
+  const rect = new Rectangle();
+  console.log(rect.x, rect.y); // 0, 0
+  rect.move(10, 10);           // Shaped moved: 10, 10
+
+  console.log(rect instanceof Rectangle); // true
+  console.log(rect instanceof Shape);     // true
+
+  //---------------------------------
+  // Inherit from multiple objects
+  //---------------------------------
+  // function MyClass() {
+  //   SuperClass.call(this);
+  //   OtherSuperClass.call(this);
+  // }
+  //
+  // inherit one class
+  // MyClass.prototype = Object.create(SuperClass.prototype);
+  //
+  // mixin another SuperClass
+  // MyClass.prototype = Object.assign(MyClass.prototype, OtherSuperClass.prototype);
+  //
+  // reassign constructor
+  // MyClass.prototype.constructor = MyClass;
+  //
+  // self-defined method
+  // MyClass.prototype.myMethod = () => { ... }
 })();
 </script>
 </body>
