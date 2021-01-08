@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Operator in JavaScript</title>
+</head>
+<body>
+<div>
+  <h3>In Operator in JavaScript</h3>
+  <p>The in operator returns true if the specified property is in the specified object or its prototype chain.</p>
+  <h3>Use Cases</h3>
+  <p>1. when we use in operator over an object, it checks property name</p>
+  <p>2. when we use in operator over an array, it checks array index, namely 0 to length - 1</p>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  // 1. in operator with object
+  const car = { make: 'Honda', model: 'Accord', year: 1998 };
+  console.log('make' in car); // true
+
+  delete car.make;
+  if ('make' in car === false) {
+    car.make = 'Suzuki';
+  }
+
+  console.log(car.make); // Suzuki
+
+  console.log('------------------------------');
+
+  // 2. in operator with array
+  let trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+  console.log(0 in trees); // true, at this place 0 refers to the index of array
+  console.log(3 in trees); // true
+  console.log(5 in trees); // false, as array's length is 5, its index is 0,1,2,3,4
+  console.log('bay' in trees); // false, as bay is property, bay is array value
+  console.log('oak' in trees); // false
+})();
+</script>
+</body>
+</html>
