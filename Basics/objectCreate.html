@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Object Create Use Cases</title>
+</head>
+<body>
+<div>
+  <h2>Object Create Use Cases</h2>
+  <p>The Object.create() method creates a new object, using an existing object as the prototype of the newly created object.</p>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  // basic
+  const person = {
+    isHuman: false,
+    printIntroduction: function() {
+      console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+    }
+  };
+
+  person.printIntroduction(); // My name is undefined. Am I human? false
+
+  const matthew = Object.create(person);
+  matthew.name = 'Mattew'; // "name" is a property set on "matthew", but not on "person"
+  matthew.isHuman = true;  // inherited properties can be overwritten
+  matthew.printIntroduction(); // My name is Mattew. Am I human? true
+
+  // others
+  Object.create({});   // {}
+  Object.create(null); // {}
+})();
+</script>
+</body>
+</html>
