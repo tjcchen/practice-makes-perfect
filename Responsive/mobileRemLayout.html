@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>Mobile Rem Layout</title>
+<script type="text/javascript">
+;(function(win, doc) {
+  let docEl = doc.documentElement;
+  let dpr = win.devicePixelRatio || 1;
+
+  //--------------------
+  // set body fontSize
+  //--------------------
+  function setBodyFontSize() {
+    if (doc.body) {
+      // On Mac, dpr = 2. set fontSize to 24px will make the font too large.
+      // at this place, we set body fontSize 16px
+      // doc.body.style.fontSize = (12 * dpr) + 'px'
+      doc.body.style.fontSize = '16px';
+    } else {
+      doc.addEventListener('DOMContentLoaded', setBodyFontSize);
+    }
+  }
+  setBodyFontSize();
+
+  //-------------------------------------------------------------------------------------------
+  // set rem based on viewport width, most mobile UI has a 750px width. Therefore,
+  // 1. 750 / 10 = 75px  =>  1rem = 75px, this approach would be hard to calculate elements rem
+  // 2. 750 / 7.5 = 100px  =>  1rem = 100px, this approach is much more convenient
+  //-------------------------------------------------------------------------------------------
+  function setRemUnit() {
+    // 1rem = 75px
+    // let rem = docEl.clientWidth / 10;
+    // 1rem = 100px
+    let viewportWidth = Math.max(docEl.clientWidth || 0, win.innerWidth || 0);
+    let rem = viewportWidth / 7.5;
+    docEl.style.fontSize = rem + 'px';
+  }
+  setRemUnit();
+
+  win.addEventListener('resize', setRemUnit);
+  win.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      setRemUnit();
+    }
+  });
+
+  //-----------------------
+  // detect 0.5px supports
+  //-----------------------
+  if (dpr >= 2) {
+    let fakeBody = doc.createElement('body');
+    let testEl = doc.createElement('div');
+
+    // append fake element to body
+    testEl.style.border = '0.5px solid transparent';
+    fakeBody.appendChild(testEl);
+    docEl.appendChild(fakeBody);
+
+    console.log(testEl.offsetHeight);
+
+    // if support 1px, we add a 'supportOnePixel' class mark
+    if (testEl.offsetHeight === 1) {
+      docEl.classList.add('supportOnePixel');
+    }
+
+    docEl.removeChild(fakeBody);
+  }
+})(window, document);
+</script>
+<style type="text/css">
+.flex_container {
+  display: flex;
+  font-size: 0.5rem;
+  height: 6rem;
+}
+.flex_container .flex_item_left {
+  flex: 1;
+  background: pink;
+}
+.flex_container .flex_item_right {
+  flex: 2;
+  background: orange;
+}
+.formula {
+  font-size: 0.8rem;
+}
+</style>
+</head>
+<body>
+<div class="flex_container">
+  <div class="flex_item_left">Flex Item Left</div>
+  <div class="flex_item_right">Flex Item Right</div>
+</div>
+<div class="formula">
+  dpr = physical pixels( device resolution, eg: 2880 x 1800 ) / logical pixels ( browser's dimension, eg: (1440 x 900) )
+</div>
+</body>
+</html>
