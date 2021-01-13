@@ -65,6 +65,29 @@
     transform: scaleY(0.33);
   }
 }
+
+/* 4 borders */
+.box2 {
+  width: 200px;
+  height: 200px;
+  margin-top: 30px;
+}
+.scale-1px-plus {
+  position: relative;
+  border: none;
+}
+.scale-1px-plus:after {
+  position: absolute;
+  content: ''; 
+  top: 0;
+  left: 0;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: 0 0; 
+}
 </style>
 </head>
 <body>
@@ -72,6 +95,7 @@
   <h2>Solutions to 1px problem on mobile devices</h2>
   <div class="container scale-1px">Container</div>
   <div class="box"></div>
+  <div class="box2 scale-1px-plus"></div>
   <div class="border-bottom"></div>
 </div>
 </body>
