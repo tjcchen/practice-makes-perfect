@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Viewport</title>
+<style>
+/* 0.5 px */
+.box {
+  border: 1px solid black;
+  background-color: pink;
+  width: 200px;
+  height: 200px;
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .box {
+    border-width: 0.5px
+  }
+}
+</style>
+</head>
+<body>
+<div>
+  <h3>Dynamic Viewport</h3>
+  <div class="box"></div>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  let metaEl = document.querySelector('meta[name="viewport"]');
+
+  if (navigator.userAgent.match(/iP(hone|od|ad)/gi)) {
+    metaEl.content = 'width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no';
+  }
+
+  if (navigator.userAgent.match(/Android/gi)) {
+    metaEl.content = 'width=device-width, target-densityDpi=device-dpi, initial-scale=0.33333, maximum-scale=0.33333, minimum-scale=0.33333, user-scalable=no';
+  }
+
+  // add hairlines class to html tag on ios8 and later
+  if (/iP(hone|od|ad)/.test(navigator.userAgent)) {
+    let v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+    let version = parseInt(v[1], 10);
+
+    if(version >= 8){
+      document.documentElement.classList.add('hairlines')
+    }
+  }
+})();
+</script>  
+</body>
+</html>
