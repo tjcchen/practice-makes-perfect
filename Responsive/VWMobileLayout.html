@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Layout with Unit vw</title>
+<style type="text/css">
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  padding: 1vw;
+  font-size: 4vw;
+  color: #4a4a4a;
+}
+.list-view {
+  width: 100%;
+}
+.list-view .card-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-view .card-item {
+  width: 50%;
+  padding: 2vw 1vw;
+  display: inline-block;
+}
+.list-view .img-box {
+  width: 100%;
+  height: 30vw;
+}
+.list-view .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.list-view .card-item {
+  text-decoration: none;
+}
+.list-view .card-item h3 {
+  color: #4a4a4a;
+  font-weight: 400;
+  font-size: 4vw;
+  padding: 2vw 0 0;
+
+  /* multiline truncate */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.footer {
+  text-align: center;
+  margin: 3vw 0;
+  font-size: 4vw;
+  color: #4a4a4a;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h3 class="caption">This project uses a simple demo to introduce the core mechanism of VW mobile layout</h3>
+</div>
+<div class="list-view">
+  <div class="card-box">
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/mural-zoom.jpg" />
+      </div>
+      <h3>How to make beef noodles? In overseas Chinese in North America, this food can be found in Chinese restaurants. In Mainland China, a large bowl of it is often taken as a whole meal with or without any side dish</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/mural-zoom.jpg" />
+      </div>
+      <h3>How to make beef noodles?</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/mural-zoom.jpg" />
+      </div>
+      <h3>How to make beef noodles?</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/mural-zoom.jpg" />
+      </div>
+      <h3>How to make beef noodles?</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/algorithm.png" />
+      </div>
+      <h3>Sorting Algorithm Explained</h3>
+    </a>
+    <a href="javascript:;" class="card-item">
+      <div class="img-box">
+        <img src="../Assets/image/mural-zoom.jpg" />
+      </div>
+      <h3>How to make beef noodles?</h3>
+    </a>
+  </div>
+</div>
+<div class="footer">
+  <p>This project is licensed under MIT</p>
+</div>
+</body>
+</html>
