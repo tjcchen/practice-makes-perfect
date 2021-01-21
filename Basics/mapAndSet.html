@@ -19,6 +19,9 @@
   <p>2. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore.</p>
   <p>3. The WeakMap keys are not enumerable.</p>
   <p>4. One use case of WeakMap is to store private data</p>
+  <h3>Array vs Set</h3>
+  <p>1. Set objects store unique values.</p>
+  <p>2. Set objects let you delete elements by their value. With an array, you would have to splice based on an element's index. Like: <pre><code>arr.splice(arr.indexOf(val), 1)</code></pre></p>
 </div>
 
 <script type="text/javascript" src="../Assets/js/require.js"></script>
@@ -57,10 +60,37 @@
   // 3. WeakMap keys are not enumerable
   // 4. Utilize WeakMap objects to store private data for an object
   //--------------------------------------------------------------------------------------------------
+  
+  // amd - async invocation
   require(['WeakMap'], function(WMap) {
     const wmap = new WMap();
     console.log(wmap.method());
   });
+  console.log('--------------------');// divider
+
+  //------------------
+  // Set Usage
+  //------------------
+  let set = new Set();
+  set.add('some text');
+  set.add(1);
+  set.add('foo');
+
+  console.log(set.has(1));            // true
+  set.delete('foo');                  // remove element
+  console.log(set.size);              // 2
+
+  // utilize for...of to iterate over set
+  for (let item of set) {
+    console.log(item);                // some text, 1
+  }
+
+  // converting between Array and Set
+  let arr1 = Array.from(set);
+  let arr2 = [...set, false];
+  console.log(arr1);                  // ["some text", 1]
+  console.log(arr2);                  // ["some text", 1, false]
+  console.log('--------------------');// divider
 })();
 </script>
 </body>
