@@ -22,6 +22,10 @@
   <h3>Array vs Set</h3>
   <p>1. Set objects store unique values.</p>
   <p>2. Set objects let you delete elements by their value. With an array, you would have to splice based on an element's index. Like: <pre><code>arr.splice(arr.indexOf(val), 1)</code></pre></p>
+  <h3>WeakSet</h3>
+  <p>1. WeakSet objects are collections of objects.</p>
+  <p>2. An object in the WeakSet may only occur once.</p>
+  <p>3. It is unique in the WeakSet's collection, and objects are not enumerable.</p>
 </div>
 
 <script type="text/javascript" src="../Assets/js/require.js"></script>
@@ -60,7 +64,6 @@
   // 3. WeakMap keys are not enumerable
   // 4. Utilize WeakMap objects to store private data for an object
   //--------------------------------------------------------------------------------------------------
-  
   // amd - async invocation
   require(['WeakMap'], function(WMap) {
     const wmap = new WMap();
@@ -91,6 +94,19 @@
   console.log(arr1);                  // ["some text", 1]
   console.log(arr2);                  // ["some text", 1, false]
   console.log('--------------------');// divider
+
+  //----------------------------------------------------------------------------
+  // WeakSet
+  // 1. WeakSet objects are collections of objects.
+  // 2. An object in the WeakSet may only occur once.
+  // 3. It is unique in the WeakSet's collection, and objects are not enumerable.
+  //-----------------------------------------------------------------------------
+  const weakSet = new WeakSet();
+  weakSet.add(new Date());
+  weakSet.add([1, 2, 3, 4]);
+  weakSet.add(Object.create(null));
+
+  console.log(weakSet);                 // [Object, Array(4), Thu Jan 21 2021 22:32:19 GMT+0800 (China Standard Time)]
 })();
 </script>
 </body>
