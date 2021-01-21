@@ -10,9 +10,18 @@
   <div>
     <h3>Usages and differences among Set, WeakSet, Map, WeakMap</h3>
   </div>
-  <p>1. The WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. The keys must be objects and the values can be arbitrary values.</p>
+  <h3>Map vs Objects</h3>
+  <p>1. Use maps over objects when keys are unknown until run time, and when all keys are the same type and all values are the same type.</p>
+  <p>2. Use maps if there is a need to store primitive values as keys because object treats each key as a string.</p>
+  <p>3. Use objects when there is logic that operates on individual elements.</p>
+  <h3>WeakMap</h3>
+  <p>1. Keys must be objects, values can be arbitrary values</p>
+  <p>2. The object references in the keys are held weakly, meaning that they are a target of garbage collection (GC) if there is no other reference to the object anymore.</p>
+  <p>3. The WeakMap keys are not enumerable.</p>
+  <p>4. One use case of WeakMap is to store private data</p>
 </div>
 
+<script type="text/javascript" src="../Assets/js/require.js"></script>
 <script type="text/javascript">
 (function() {
   'use strict';
@@ -39,9 +48,19 @@
 
   map.clear();
   console.log(map.size);              // 0
-  
-  // divider
-  console.log('------------------------');
+  console.log('--------------------');// divider
+
+  //-------------------------------------------------------------------------------------------------
+  // WeakMap usage
+  // 1. keys must be objects, values can be arbitrary values
+  // 2. GC will clean up values if keys no longer in use, this is called weak reference
+  // 3. WeakMap keys are not enumerable
+  // 4. Utilize WeakMap objects to store private data for an object
+  //--------------------------------------------------------------------------------------------------
+  require(['WeakMap'], function(WMap) {
+    const wmap = new WMap();
+    console.log(wmap.method());
+  });
 })();
 </script>
 </body>
