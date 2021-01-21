@@ -1,23 +1,13 @@
-<h2>Interviews</h2>
-<p>
-  Personal project for front-end interview preparations.
-</p>
+## Interviews
+> A personal project for front-end interview preparations.
 
-<h2>Documentation</h2>
-<p>
-  MDN: https://developer.mozilla.org/en-US/
-  <br/>
-  Promises A+: https://promisesaplus.com/
-  <br/>
-  XHR Specification: https://xhr.spec.whatwg.org/
-</p>
+## Documentation
+MDN: https://developer.mozilla.org/en-US/  
+Promises A+: https://promisesaplus.com/  
+XHR Specification: https://xhr.spec.whatwg.org/
 
-<h2>Contact</h2>
-<p>
-  Email: <a href="mailto:tjcchen.engineer@gmail.com">tjcchen.engineer[AT]gmail.com</a>
-</p>
+## Contact
+Email: <a href="mailto:tjcchen.engineer@gmail.com">tjcchen.engineer[AT]gmail.com</a>
 
-<h2>License</h2>
-<p>
-  This project is licensed under the terms of the MIT license.
-</p>
+## License
+This project is licensed under the terms of the MIT license.
