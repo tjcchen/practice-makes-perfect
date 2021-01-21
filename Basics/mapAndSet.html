@@ -17,52 +17,31 @@
 (function() {
   'use strict';
 
-  // Map
-  const map = new Map();
-  map.set('name', 'john');
-  map.set('phone', 'iPhone');
+  //------------------
+  // Map usage
+  //------------------
+  let map = new Map();
+  map.set('name', 'jackie');
+  map.set('age', 23);
+  map.set('occupation', 'software engineer');
+  console.log(map.size);              // 3
+  console.log(map.get('name'));       // jackie
+  console.log(map.get('age'));        // 23
+  console.log(map.get('occupation')); // software engineer
 
-  // console.log(map.keys()); // {'name', 'phone'}
-  // console.log(map.values()); // {"john", "iPhone"}
-  // console.log(map.entries()); // {"name" => "john", "phone" => "iPhone"}
-  // const spreadMap = [...map];
-  // console.log(spreadMap); // [["name", "john"], ["phone", "iPhone"]]
-  // map.delete('phone'); // true
-  // map.delete('fake'); // false
+  map.delete('age');
+  console.log(map.has('age'));        // false
 
-  for (const [key, value] of map) {
-    console.log(`${key}: ${value}`); // name: john, phone: iPhone
+  // for...of loop returns an array of [key, value] for each iteration
+  for (let [key, value] of map) {
+    console.log(key + ': ' + value);  // name: jackie, occupation: software engineer
   }
+
+  map.clear();
+  console.log(map.size);              // 0
   
-  // WeakMap
-  // 1. the key must be an object
-  const John = { name: 'John' };
-  const weakMap = new WeakMap();
-  weakMap.set(John, 'student');
-  // weakMap.set('john', 'student'); // Uncaught TypeError: Invalid value used as weak map key
-
-  // 2. Not all methods from Map are supportive in WeakMap, it only support delete, get, has, set,
-  // WeakMap doesn't support methods for iterating the object
-  // 
-  // for (const entry of weakMap) { // Uncaught TypeError: weakMap is not iterable
-  //   console.log(entry);
-  // }
-
-  // 3. data is removed when GC cleans up the reference
-  let Lee = { major: 'math' };
-  const map1 = new Map();
-  const weakMap1 = new WeakMap();
-
-  map1.set(Lee, 'Lee');
-  weakMap1.set(Lee, 'Lee');
-
-  console.log(map1.get(Lee)); // "Lee"
-  console.log(weakMap1.get(Lee)); // "Lee"
-
-  Lee = null; // Lee is garbage-collected
-
-  console.log(map1.get(Lee)); // undefined
-  console.log(weakMap1.get(Lee)); // undefined
+  // divider
+  console.log('------------------------');
 })();
 </script>
 </body>
