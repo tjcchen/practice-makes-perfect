@@ -1,3 +1,6 @@
+/**
+ * Utilize WeakMap objects to store private data for an object
+ */
 ;(function(root, factory) {
   'use strict';
 
