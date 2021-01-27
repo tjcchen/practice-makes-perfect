@@ -118,8 +118,6 @@
     }
 
     static all(promiseArr) {
-      console.log('--- self-defined promise.all ---');
-
       const len = promiseArr.length;
       const values = new Array(len);
 
@@ -127,21 +125,20 @@
 
       return new Promise((resolve, reject) => {
         for (let i = 0; i < len; i++) {
-          Promise.resolve(promiseArr[i]).then(val => {
-            values[i] = val;
-            count++;
+          Promise.resolve(promiseArr[i]).then(
+            (val) => {
+              values[i] = val;
+              count++;
 
-            if (count === len) resolve(values);  
-          },
-          err => reject(err)
+              if (count === len) resolve(values);  
+            },
+            (err) => reject(err)
           );
         }
       });
     }
 
     static race(promiseArr) {
-      console.log('--- self-defined promise.race ---');
-
       return new Promise((resolve, reject) => {
         promiseArr.forEach(p => {
           Promise.resolve(p).then(
