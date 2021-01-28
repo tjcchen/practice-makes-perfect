@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Test</title>
+<style type="text/css">
+pre {
+  background: #f6f6f6;
+}
+code {
+  background-color: #f1f1f1;
+}
+body {
+  display: flex;
+  flex-direction: row;
+}
+body .left {
+  flex: 1 1 45%;
+  padding: 0 10px;
+}
+body .right {
+  flex: 1 1 55%;
+  padding: 0 20px;
+}
+</style>
+</head>
+<body>
+<div class="left">
+  <div>
+    <h3>JavaScript Code: </h3>
+    <pre>
+      <code>
+      async function async1() {
+        console.log('async1 start');
+        await async2();
+        console.log('async1 end');
+      }
+    
+      async function async2() {
+        console.log('async2');
+      }
+    
+      console.log('script start');
+    
+      setTimeout(function() {
+        console.log('setTimeout');
+      }, 0);
+    
+      async1();
+    
+      new Promise(function(resolve) {
+        console.log('promise1');
+        resolve();
+      }).then(function() {
+        console.log('promise2');
+      });
+    
+      console.log('script end');
+      </code>
+    </pre>
+    <hr/>
+    <h3>Result Sequence: </h3>
+    <pre>
+      <code>
+      script start
+      async1 start
+      async2
+      promise1
+      script end
+      async1 end
+      promise2
+      setTimeout</code>
+    </pre>
+  </div>
+</div>
+<hr/>
+<div class="right">
+  <div>
+    <h3>Execution Sequence</h3>
+    <p>1. sync code first.</p>
+    <p>2. async code later.</p>
+    <p>3. <code>setTimeout(func, 0);</code> place func to JS message queue. When all code, sync and async, finished executing, we then execute func.</p>
+  </div>
+  <hr/>
+  <div>
+    <h3>Explanations About <code>setTimeout(func, 0);</code></h3>
+    <p>1. JavaScript is single-threaded. Asynchronous callbacks are assigned to a message placed in a message queue.</p>
+    <p>2. When no code is currently executing, the event loop polls the message queue, requesting the next message in line to be processed (executed).</p>
+    <p>3. <code>setTimeout</code> adds a message (with the callback provided) to the end of this queue after the specified delay has elapsed.</p>
+  </div>
+  <hr/>
+  <div>
+    <h3>Useful Links</h3>
+    <p>1. https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</p>
+    <p>2. https://stackoverflow.com/questions/33955650/what-is-settimeout-doing-when-set-to-0-milliseconds/33955673</p>
+    <p></p>
+  </div>
+</div>
+
+<script type="text/javascript">
+(function() {
+  'use strict';
+
+  async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+  }
+
+  async function async2() {
+    console.log('async2');
+  }
+
+  console.log('script start');
+
+  setTimeout(function() {
+    console.log('setTimeout');
+  }, 0);
+
+  async1();
+
+  new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+  }).then(function() {
+    console.log('promise2');
+  });
+
+  console.log('script end');
+})();
+</script>
+</body>
+</html>
