@@ -1,23 +1,25 @@
 /**
- * Compare version - valid version numbers look like this:
+ * Version Comparison V1
  * 
- * Eg: v1: 1.1.3  v2: 2.3.4
+ * In version 1, we only take care of three-digit version comparison.
+ * For other senarios, we'll tackle them in later versions.
  * 
+ * Valid version numbers look like this: v1: 1.1.3  v2: 2.3.4
  */
 
 'use strict';
 
 /**
- * Returns the larger version of two version numbers 
+ * Returns the larger version of two version numbers
  * 
- * @param {*} version1 version number 1
- * @param {*} version2 version number 2
+ * @param {String} version1 version number 1
+ * @param {String} version2 version number 2
  */
 const compareVersion = (version1, version2) => {
-  let regExp = /^(\d+\.)?(\d+\.)?(\d+)?$/;
+  let regExp = /^(\d+\.){1}(\d+\.){1}(\d+){1}$/;
 
   if (!regExp.test(version1) || !regExp.test(version2)) {
-    throw new Error('Version numbers must be digits and dots combination');
+    throw new Error('Invalid version numbers, please check them! A valid version number format like this: 1.1.3');
   }
 
   let arr1 = version1.split('.');
@@ -41,5 +43,8 @@ const compareVersion = (version1, version2) => {
   return version1;
 };
 
+//----------------
+// Test Section
+//----------------
 let largerVersion = compareVersion('1.1.3', '2.3.4');
 console.log(largerVersion);
