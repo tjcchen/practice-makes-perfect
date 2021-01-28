@@ -1,4 +1,5 @@
-// 题目1
+#### 题目1
+```js
 async function async1() {
     console.log('async1 start');
     await async2();
@@ -19,6 +20,9 @@ new Promise(function(resolve) {
     console.log('promise2');
 });
 console.log('script end');
+```
 
-// 题目2
+#### 题目2
+```
 v1: 1.1.3  v2: 2.3.4  版本对比方法
+```
