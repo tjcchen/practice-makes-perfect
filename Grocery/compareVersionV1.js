@@ -2,7 +2,7 @@
  * Version Comparison V1
  * 
  * In version 1, we only take care of three-digit version comparison.
- * For other senarios, we'll tackle them in later versions.
+ * For other scenarios, we'll tackle them in later versions.
  * 
  * Valid version numbers look like this: v1: 1.1.3  v2: 2.3.4
  */
