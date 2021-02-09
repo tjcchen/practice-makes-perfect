@@ -8,9 +8,12 @@
 <body>
 <div>
   <h3>New Function Use Cases</h3>
+  <p>1. Every JavaScript function is actually a Function object. </p>
 </div>
 
 <script type="text/javascript">
+let x = 10;
+
 (function() {
   // IIFE
   
@@ -23,6 +26,30 @@
     this.name = name;
   }
   console.log(Animal.constructor); // Function
+
+  // 2. Functions created with the Function constructor do not create closures to their creation contexts; they always are created in the global scope.
+  // When running them, they will only be able to access their own local variables and global ones, not the ones from the scope in which the Function constructor was created. 
+  // This is different from using eval with code for a function expression.
+  let x = 15;
+  
+  function createFunction1() {
+    let x = 20;
+    return new Function('return x;'); // this |x| refers global |x|, namely x = 10;
+  }
+
+  function createFunction2() {
+    let x = 20;
+    function f() {
+      return x; // this |x| refers local |x| above, namely x = 20;
+    }
+    return f;
+  }
+
+  let f1 = createFunction1();
+  console.log(f1()); // global x, x = 10;
+
+  let f2 = createFunction2();
+  console.log(f2()); // local variable of createFunction2, x = 20;
 })();
 </script>
 </body>
