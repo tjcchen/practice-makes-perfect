@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Function Use Cases</title>
+</head>
+<body>
+<div>
+  <h3>New Function Use Cases</h3>
+</div>
+
+<script type="text/javascript">
+(function() {
+  // IIFE
+  
+  'use strict';
+
+  // 1. Every JavaScript function is actually a Function object.
+  console.log((function(){}).constructor === Function); // true
+
+  function Animal(name) {
+    this.name = name;
+  }
+  console.log(Animal.constructor); // Function
+})();
+</script>
+</body>
+</html>
