@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Function Use Cases</title>
+</head>
+<body>
+  <div>
+    <h3>New Function Use Cases</h3>
+  </div>
+
+  <script type="text/javascript">
+  (function() {
+    'use strict';
+
+    // [Syntax] The syntax of creating a function:
+    // let func = new Function([arg1, arg2, ...argN], functionBody);
+
+    // eg1:
+    let sum = new Function('a', 'b', 'return a + b;');
+    console.log(sum(1, 2)); // 3
+
+  })();
+  </script>
+</body>
+</html>
