@@ -9,6 +9,7 @@
   <div>
     <h3>New Function Closure</h3>
     <p>Note: When a function is created using new Function, its [[Environment]] is set to reference not the current Lexical Environment, but the global context.</p>
+    <p>Note: If new Function had access to outer variables, it would have problems with minifiers. Thus, we need to, at this case, create a new Function with arguments.</p>
   </div>
 
   <script type="text/javascript">
@@ -33,6 +34,11 @@
   }
 
   getFunc2()(); // Uncaught ReferenceError: value is not defined
+
+  // synxtax: new Function synxtax support
+  // new Function('a', 'b', 'return a + b'); // basic syntax
+  // new Function('a,b', 'return a + b');    // comma-separated
+  // new Function('a , b', 'return a + b');  // comma-separated with spaces
   </script>
 </body>
 </html>
