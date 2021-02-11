@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Function Closure</title>
+</head>
+<body>
+  <div>
+    <h3>New Function Closure</h3>
+    <p>Note: When a function is created using new Function, its [[Environment]] is set to reference not the current Lexical Environment, but the global context.</p>
+  </div>
+
+  <script type="text/javascript">
+  // 1. create a function with regular behavior
+  function getFunc() {
+    let value = 'test';
+
+    let func = function() { alert(value) };
+
+    return func;
+  }
+
+  getFunc()();
+
+  // 2. create a function with new Function()
+  function getFunc2() {
+    let value = 'test';
+
+    let func = new Function('alert(value);');
+
+    return func;
+  }
+
+  getFunc2()(); // Uncaught ReferenceError: value is not defined
+  </script>
+</body>
+</html>
