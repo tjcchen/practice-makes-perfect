@@ -8,6 +8,10 @@
 <body>
   <div>
     <h3>New Function Use Cases</h3>
+    <p>Concept: New Function is created literally from a string, that is passed at run time.</p>
+    <h3>Use Cases</h3>
+    <p>1. Receive js code from server side, and then execute it in client.</p>
+    <p>2. Dynamically compile a function from a templte in complex web applications.</p>
   </div>
 
   <script type="text/javascript">
@@ -17,10 +21,19 @@
     // [Syntax] The syntax of creating a function:
     // let func = new Function([arg1, arg2, ...argN], functionBody);
 
-    // eg1:
+    // eg1: function with two arguments
     let sum = new Function('a', 'b', 'return a + b;');
     console.log(sum(1, 2)); // 3
 
+    // eg2: function without arguments
+    let sayHi = new Function('alert("Hi new Function")');
+    sayHi();
+
+    // eg3: new Function allows to turn any string into a function.
+    // For example, we can receive a new function from a server and then execute it
+    let str = 'console.log("... receive the code or data from a server dynamically ...")';
+    let func = new Function(str);
+    func();
   })();
   </script>
 </body>
