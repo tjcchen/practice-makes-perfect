@@ -1,0 +1,1 @@
+// todo: add storage js encapsulation code logic
