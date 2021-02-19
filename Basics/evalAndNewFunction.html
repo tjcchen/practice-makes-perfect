@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difference between eval and new Function</title>
+</head>
+<body>
+  <h3>Difference between eval and new Function</h3>
+  
+  <script type="text/javascript">
+  let evaluate = function(string) {
+    return eval(`${string}`);
+  };
+
+  let newFunc = function(string) {
+    return new Function(`return ${string}`)();
+  };
+
+  console.log(evaluate('2 + 3')); // 5
+  console.log(newFunc('2 + 3'));  // 5
+  </script>
+</body>
+</html>
