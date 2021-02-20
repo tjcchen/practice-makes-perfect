@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Use Cases</title>
+</head>
+<body>
+  <h3>Eval Use Cases</h3>
+  <p>1. Log variables' value with eval()</p>
+  
+  <script type="text/javascript">
+  (function(win) {
+    'use strict';
+
+    let firstMessage  = 'This is first log message';
+    let secondMessage = 'This is second log message';
+
+    const logValues = (...args) => {
+      for (let i in args) {
+        console.log(args[i] + ": " + eval(args[i]));
+      }
+    };
+
+    logValues('firstMessage', 'secondMessage');
+  })(window);
+  </script>
+</body>
+</html>
