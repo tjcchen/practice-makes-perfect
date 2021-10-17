@@ -1,1 +1,0 @@
-// 10 tips concerning es6
