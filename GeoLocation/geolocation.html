@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoLocation Picker</title>
+</head>
+<body>
+  <p>Location: <i id="txt"></i></p>
+  <button id="geo">Obtain Location</button>
+  <script>
+    (function() {
+      // geocodeing website: https://opencagedata.com/api#quickstart
+      let geoCodingApi = 'https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=7fba0b0e9a474451a2807c4e9700e8de';
+      let geoEl = document.querySelector('#geo');
+      let txtEl = document.querySelector('#txt');
+
+      geoEl.addEventListener('click', () => {
+        navigator.geolocation.getCurrentPosition(
+          (geo) => {
+            const { latitude, longitude } = geo.coords;
+            fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=7fba0b0e9a474451a2807c4e9700e8de`)
+              .then(response => response.json())
+              .then(data => {
+                txtEl.innerHTML = data.results[0].formatted;
+              });
+          },
+          (error) => {
+            throw new Error(error.message);
+          }
+        );
+      }, false);
+    })();
+  </script>
+</body>
+</html>
