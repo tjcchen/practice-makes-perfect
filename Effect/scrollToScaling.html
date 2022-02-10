@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+          height: 400vh;
+        }
+      
+        div {
+          position: fixed;
+          top: 32px;
+          left: 32px;
+          height: 64px;
+          width: 64px;
+          border: 4px solid;
+          border-radius: 4px;
+          transition: all 100ms linear;
+        }
+      </style>
+      
+      <div>Scroll down</div>
+      
+      <script>
+        console.clear();
+      
+        const div = document.querySelector('div');
+      
+        window.addEventListener('scroll', () => {
+          console.log(window.scrollX)
+          div.style.width = `${64 + window.scrollY}px`;
+          div.style.height = `${64 + window.scrollY}px`;
+        });
+      </script>
+</body>
+</html>
