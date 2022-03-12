@@ -1,5 +1,5 @@
 ## Interviews
-> A personal project for front-end interview preparations.
+> A personal practice repository.
 
 ## Documentation
 MDN: https://developer.mozilla.org/en-US/  
