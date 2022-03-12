@@ -1,5 +1,5 @@
-## Interviews
-> A personal practice repository.
+## Practice Makes Perfect
+> A personal practice repository, primarily focusing on FE technologies.
 
 ## Documentation
 MDN: https://developer.mozilla.org/en-US/  
