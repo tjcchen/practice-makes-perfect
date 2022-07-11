@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="font-size: 100px;">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>内容加载loading态</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内容加载loading态</title>
+<style type="text/css">
+*, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+@keyframes pv-shared-horizontal-shimmer {
+    0% {
+        background-position: -66vw 0
+    }
+    to {
+        background-position: 66vw 0
+    }
+}
+
+.pv-shared-shimmer-loader {
+    animation-name: pv-shared-horizontal-shimmer;
+    animation-duration: 1000ms;
+    animation-delay: 84ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.34,0,.21,1);
+    background-attachment: fixed;
+    background-color: rgba(0,0,0,0.08);
+    background-repeat: no-repeat;
+    background-image: linear-gradient(120deg, hsla(0,0%,100%,0) 40%, rgba(0,0,0,0.08) 50%, hsla(0,0%,100%,0) 60%);
+    background-size: 100vw 100vh;
+}
+
+.pv-shared-shimmer-loader--fill-area {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.pv-shared-shimmer-bar {
+  width: 60%;
+  height: 0.6rem;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+</style>
 </head>
 <body>
-  
+  <p>内容加载loading态</p>
+  <div class="pv-shared-shimmer-bar">
+    <div class="pv-shared-shimmer-loader pv-shared-shimmer-loader--fill-area"></div>
+  </div>
+  <div class="pv-shared-shimmer-bar">
+    <div class="pv-shared-shimmer-loader pv-shared-shimmer-loader--fill-area"></div>
+  </div>
+  <div class="pv-shared-shimmer-bar">
+    <div class="pv-shared-shimmer-loader pv-shared-shimmer-loader--fill-area"></div>
+  </div>
+  <div class="pv-shared-shimmer-bar">
+    <div class="pv-shared-shimmer-loader pv-shared-shimmer-loader--fill-area"></div>
+  </div>
+  <div class="pv-shared-shimmer-bar">
+    <div class="pv-shared-shimmer-loader pv-shared-shimmer-loader--fill-area"></div>
+  </div>
 </body>
 </html>
