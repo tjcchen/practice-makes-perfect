@@ -28,8 +28,8 @@
   const NOT_MODIFIED       = 304;
   const READY              = 4;
 
-  let isAsync             = true;
-  let xhr                 = null;
+  let isAsync              = true;
+  let xhr                  = null;
 
   const init = () => {
     return XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
